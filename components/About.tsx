@@ -16,7 +16,7 @@ const About: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-tr from-primary via-dark to-secondary rounded-xl rotate-3 opacity-40 group-hover:rotate-1 transition-transform duration-500" />
                     <div className="relative rounded-xl overflow-hidden border border-white/10 aspect-[4/5] max-w-sm mx-auto bg-black/50 backdrop-blur-sm">
                         <img 
-                            src="./src/Remini.jpg" 
+                            src="./src/remini.jpg" 
                             alt="Profile" 
                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500"
                         />
