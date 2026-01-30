@@ -15,8 +15,16 @@ const About: React.FC = () => {
                 <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-tr from-primary via-dark to-secondary rounded-xl rotate-3 opacity-40 group-hover:rotate-1 transition-transform duration-500" />
                     <div className="relative rounded-xl overflow-hidden border border-white/10 aspect-[4/5] max-w-sm mx-auto bg-black/50 backdrop-blur-sm">
+                        {/* 
+                           NOTE: Pastikan file 'remini.jpg' sudah dipindahkan ke folder:
+                           public/assets/remini.jpg 
+                        */}
                         <img 
-                            src="./src/remini.jpg" 
+                            src="/assets/remini.jpg" 
+                            onError={(e) => {
+                                // Fallback jika gambar belum dipindah, kembali ke gambar random
+                                e.currentTarget.src = "https://picsum.photos/800/1000?random=99";
+                            }}
                             alt="Profile" 
                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500"
                         />
@@ -49,7 +57,7 @@ const About: React.FC = () => {
                             <p className="text-sm text-gray-400 font-mono">Job Success Score</p>
                         </div>
                         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/50 transition-colors">
-                            <h4 className="text-white font-bold text-3xl mb-1">3+</h4>
+                            <h4 className="text-white font-bold text-3xl mb-1">5+</h4>
                             <p className="text-sm text-gray-400 font-mono">Years Experience</p>
                         </div>
                     </div>
