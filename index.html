@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divo Dev | Future-Ready Developer</title>
+    <meta name="description" content="Professional portfolio of Divo Dev, a Web 3.0 Developer & UI/UX Designer specializing in React, Next.js, and immersive web experiences." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://divo.dev/" />
+    <meta property="og:title" content="Divo Dev | Future-Ready Developer" />
+    <meta property="og:description" content="Professional portfolio of Divo Dev, a Web 3.0 Developer & UI/UX Designer specializing in React, Next.js, and immersive web experiences." />
+    <meta property="og:image" content="https://picsum.photos/1200/630?random=portfolio-preview" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://divo.dev/" />
+    <meta property="twitter:title" content="Divo Dev | Future-Ready Developer" />
+    <meta property="twitter:description" content="Professional portfolio of Divo Dev, a Web 3.0 Developer & UI/UX Designer specializing in React, Next.js, and immersive web experiences." />
+    <meta property="twitter:image" content="https://picsum.photos/1200/630?random=portfolio-preview" />
+
+    <!-- Favicon Placeholder -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              primary: '#00F5FF',
+              secondary: '#7B2CBF',
+              accent: '#FF006E',
+              dark: '#0B0B15',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0B0B15;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #7B2CBF, #00F5FF);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to bottom, #FF006E, #7B2CBF);
+      }
+      body {
+        background-color: #0B0B15;
+        color: white;
+        overflow-x: hidden;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- Entry Point for Vite -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
