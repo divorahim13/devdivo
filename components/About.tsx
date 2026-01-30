@@ -57,7 +57,7 @@ const About: React.FC = () => {
                             <p className="text-sm text-gray-400 font-mono">Job Success Score</p>
                         </div>
                         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/50 transition-colors">
-                            <h4 className="text-white font-bold text-3xl mb-1">5+</h4>
+                            <h4 className="text-white font-bold text-3xl mb-1">3+</h4>
                             <p className="text-sm text-gray-400 font-mono">Years Experience</p>
                         </div>
                     </div>
