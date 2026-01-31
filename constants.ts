@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     title: 'DEVCRYPTO - Web3 Dashboard',
     category: 'Front-End / Fintech',
     image: '/assets/project-1.jpg', 
-    description: 'Dashboard analitik cryptocurrency kelas institusional dengan desain Cyberpunk futuristik. Fitur mencakup data pasar real-time, grafik interaktif, manajemen portofolio terdesentralisasi (Local-First), dan simulasi swap aset.',
+    description: 'DEVCRYPTO is an institutional-grade cryptocurrency analytics dashboard featuring a futuristic Cyberpunk aesthetic. This platform provides a high-performance interface for monitoring the digital asset ecosystem, combining real-time market intelligence with decentralized portfolio management.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'CoinGecko API'],
     link: 'https://devcrypto-steel.vercel.app/', 
 },
