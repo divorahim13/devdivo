@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     image: '/assets/project-1.jpg', 
     description: 'Dashboard analitik cryptocurrency kelas institusional dengan desain Cyberpunk futuristik. Fitur mencakup data pasar real-time, grafik interaktif, manajemen portofolio terdesentralisasi (Local-First), dan simulasi swap aset.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'CoinGecko API'],
-    link: 'https://devcrypto-web3.vercel.app', 
+    link: 'https://devcrypto-steel.vercel.app/', 
 },
   {
     id: 2,
