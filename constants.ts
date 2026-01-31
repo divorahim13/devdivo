@@ -40,13 +40,13 @@ export const SERVICES: Service[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: 'Smart Inventory System',
-    category: 'Full Stack',
-    image: 'https://picsum.photos/800/600?random=1',
-    description: 'A custom warehouse management dashboard for a local retail business. Features real-time stock tracking, low-stock alerts, and PDF report generation.',
-    tags: ['Next.js', 'PostgreSQL', 'Prisma', 'Chart.js'],
-    link: '#',
-  },
+    title: 'DEVCRYPTO - Web3 Dashboard',
+    category: 'Front-End / Fintech',
+    image: '/assets/project-1.jpg', 
+    description: 'Dashboard analitik cryptocurrency kelas institusional dengan desain Cyberpunk futuristik. Fitur mencakup data pasar real-time, grafik interaktif, manajemen portofolio terdesentralisasi (Local-First), dan simulasi swap aset.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'CoinGecko API'],
+    link: 'https://devcrypto-web3.vercel.app', 
+},
   {
     id: 2,
     title: 'CopyGen AI (SaaS MVP)',
