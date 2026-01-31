@@ -55,6 +55,7 @@ export const PROJECTS: Project[] = [
     description: 'A high-performance luxury e-commerce platform featuring a comprehensive Admin Dashboard with financial analytics, "Slide-to-Pay" secure checkout simulation, and AI-powered product description generation.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Google Gemini API', 'Context API'],
     link: 'https://luminamarket-tau.vercel.app/',
+  },
   {
     id: 3,
     title: 'UrbanSpace Real Estate',
