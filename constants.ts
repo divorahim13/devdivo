@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
   {
     id: 1,
     title: 'DEVCRYPTO - Web3 Dashboard',
-    category: 'Front-End / Fintech',
+    category: 'Web 3.0',
     image: '/assets/project-1.jpg', 
     description: 'DEVCRYPTO is an institutional-grade cryptocurrency analytics dashboard featuring a futuristic Cyberpunk aesthetic. This platform provides a high-performance interface for monitoring the digital asset ecosystem, combining real-time market intelligence with decentralized portfolio management.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'CoinGecko API'],
