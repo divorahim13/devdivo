@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
     image: '/assets/project-4.jpg',
     description: 'A full-stack AI SaaS MVP featuring OpenAI integration, Supabase authentication, and a real-time usage-based billing system.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Saas', 'Open AI API'],
-    link: '#',
+    link: 'https://divoai.vercel.app/',
   },
 ];
 
