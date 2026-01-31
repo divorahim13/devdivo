@@ -67,11 +67,11 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    title: 'TaskFlow Pro',
+    title: 'Saas AI - Divo',
     category: 'SaaS',
-    image: 'https://picsum.photos/800/600?random=4',
+    image: '/assets/project-4.jpg',
     description: 'A collaborative project management tool similar to Trello. Supports drag-and-drop task organization and team workspaces.',
-    tags: ['Next.js', 'dnd-kit', 'Tailwind', 'Firebase'],
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Saas', 'Open AI API'],
     link: '#',
   },
 ];
