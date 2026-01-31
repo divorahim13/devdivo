@@ -58,11 +58,11 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: 'UrbanSpace Real Estate',
-    category: 'Full Stack',
-    image: 'https://picsum.photos/800/600?random=3',
-    description: 'A property listing portal with advanced filtering, map integration, and a CMS for agents to upload property details easily.',
-    tags: ['React', 'Node.js', 'Mapbox GL', 'MongoDB'],
+    title: 'Nexus Company Profile',
+    category: 'Company Profile',
+    image: '/assets/project-3.jpg',
+    description: 'A Corporate Landing Page (Corporate Portfolio) with a highly immersive High-Tech/Cyberpunk theme. This website is designed to represent an advanced technology agency focused on high-performance digital infrastructure, cybersecurity, and AI.',
+    ags: ['React', 'TypeScript', 'Tailwind CSS', 'GSAP'],
     link: '#',
   },
   {
