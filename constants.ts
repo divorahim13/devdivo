@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     title: 'Saas AI - Divo',
     category: 'SaaS',
     image: '/assets/project-4.jpg',
-    description: 'A collaborative project management tool similar to Trello. Supports drag-and-drop task organization and team workspaces.',
+    description: 'A full-stack AI SaaS MVP featuring OpenAI integration, Supabase authentication, and a real-time usage-based billing system.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Saas', 'Open AI API'],
     link: '#',
   },
