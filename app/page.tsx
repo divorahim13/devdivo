@@ -1020,79 +1020,96 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black border-t border-white/10 pt-20 pb-10 px-6 md:px-12 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_100%,#5B21B610_0%,transparent_70%)] pointer-events-none" />
+    <footer className="relative bg-[#05050A] pt-32 pb-12 px-6 md:px-12 overflow-hidden border-t border-[#1A1A24]">
+      {/* Deep Space Background Gradient */}
+      <div className="absolute inset-0 bg-[#05050A] pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-20">
-          {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#5B21B6] flex items-center justify-center text-white font-display font-bold text-lg shadow-[0_0_20px_rgba(91,33,182,0.4)] border border-white/10 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
-                DK
-              </div>
-              <h3 className="text-2xl font-display font-bold text-white tracking-tight">Divo Khairul</h3>
-            </div>
-            <p className="text-white/40 text-sm leading-relaxed max-w-sm font-sans font-medium">
-              Crafting digital experiences that blend futuristic technology with human-centric design. Building the next generation of AI-powered interfaces.
+      {/* Subtle Purple/Blue Glow from bottom */}
+      <div className="absolute bottom-[-150px] left-1/2 -translate-x-1/2 w-[100%] md:w-[70%] h-[300px] bg-[radial-gradient(ellipse_at_center,_rgba(99,102,241,0.12),_transparent_70%)] pointer-events-none blur-[50px]" />
+      
+      {/* Horizon Line with Glow */}
+      <div className="absolute top-0 left-0 w-full flex justify-center">
+         <div className="w-full max-w-5xl h-[1px] bg-gradient-to-r from-transparent via-[#4F46E5]/40 to-transparent shadow-[0_0_20px_rgba(79,70,229,0.5)]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col">
+        {/* Main Footer Content */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-32">
+          
+          {/* Left: Brand & Tagline */}
+          <div className="flex flex-col max-w-md">
+            <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-6">Divo Khairul.</h3>
+            <p className="text-[#8E8E99] text-sm leading-relaxed font-sans font-medium mb-10">
+              Crafting digital experiences that blend futuristic technology with human-centric design. Building the next generation of web interfaces.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social, i) => (
-                <a 
-                  key={i} 
-                  href={social.href}
-                  className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all group"
-                >
-                  <span className="group-hover:scale-110 transition-transform duration-300">
-                    {social.icon}
-                  </span>
-                </a>
-              ))}
+            <div className="inline-flex items-center gap-3 group cursor-pointer w-fit">
+              <span className="text-[#6366F1] font-display font-bold text-sm uppercase tracking-widest group-hover:text-[#818CF8] transition-colors">
+                Let&apos;s build something meaningful
+              </span>
+              <ArrowUpRight className="w-4 h-4 text-[#6366F1] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-8">
-            <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/40 font-display font-bold">Navigation</h4>
-            <ul className="space-y-4">
-              {navItems.map((item) => (
-                <li key={item.name}>
+          <div className="flex gap-16 md:gap-24">
+            {/* Center: Navigation */}
+            <div className="flex flex-col">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] text-[#3F3F5A] font-display font-bold mb-8">Navigation</h4>
+              <div className="flex flex-col gap-5">
+                {navItems.map((item) => (
                   <a 
+                    key={item.name} 
                     href={item.href}
-                    className="text-white/60 hover:text-white text-sm font-sans font-medium transition-colors flex items-center gap-2 group"
+                    className="text-[#8E8E99] hover:text-white text-sm font-sans font-medium transition-colors"
                   >
-                    <span className="w-1 h-1 rounded-full bg-[#5B21B6] opacity-0 group-hover:opacity-100 transition-opacity" />
                     {item.name}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+            </div>
 
+            {/* Right: Connect / Social */}
+            <div className="flex flex-col">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] text-[#3F3F5A] font-display font-bold mb-8">Connect</h4>
+              <div className="flex items-center gap-4">
+                {socialLinks.map((social, i) => (
+                  <a 
+                    key={i} 
+                    href={social.href}
+                    className="w-11 h-11 rounded-lg bg-[#0A0A0F] border border-[#1A1A24] flex items-center justify-center text-[#8E8E99] hover:text-white hover:border-[#4F46E5]/40 hover:bg-[#1A1A24] transition-all duration-300 group shadow-[inset_0_1px_3px_rgba(255,255,255,0.02)]"
+                  >
+                     <span className="group-hover:scale-110 transition-transform duration-300">
+                       {social.icon}
+                     </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        {/* Bottom Metadata */}
+        <div className="pt-8 border-t border-[#1A1A24] flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-6">
-            <p className="text-white/20 text-[10px] font-display font-bold uppercase tracking-widest">
-              © 2026 Divo Khairul. All rights reserved.
+            <p className="text-[#3F3F5A] text-[10px] font-display font-bold uppercase tracking-widest">
+              © 2026 DIVO KHAIRUL. ALL RIGHTS RESERVED.
             </p>
             <div className="hidden md:flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-[#4ade80] shadow-[0_0_5px_#4ade80]" />
-              <span className="text-[9px] text-white/20 uppercase tracking-widest font-display font-bold">System Status: Optimal</span>
+              <div className="relative flex items-center justify-center w-2 h-2">
+                <span className="absolute w-2 h-2 rounded-full bg-[#10B981] opacity-40 animate-ping" />
+                <span className="relative w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+              </div>
+              <span className="text-[9px] text-[#3F3F5A] uppercase tracking-widest font-display font-bold">System: Online</span>
             </div>
           </div>
           
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-3 text-white/40 hover:text-white transition-all"
+            className="group flex items-center gap-3 text-[#525266] hover:text-[#8E8E99] transition-all"
           >
             <span className="text-[10px] uppercase tracking-[0.3em] font-display font-bold">Back to top</span>
-            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/5 group-hover:border-white/30 transition-all">
-              <ChevronRight size={14} className="-rotate-90" />
+            <div className="w-8 h-8 rounded-lg border border-[#1A1A24] bg-[#0A0A0F] flex items-center justify-center group-hover:border-[#4F46E5]/40 group-hover:bg-[#1A1A24] transition-all duration-300">
+              <ChevronRight size={14} className="-rotate-90 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </button>
         </div>
