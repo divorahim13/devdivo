@@ -808,7 +808,7 @@ const ContactSection = () => {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-[#111111] border border-white/5 p-5 rounded-[24px] flex items-start gap-5 group hover:border-[#8B5CF6]/30 hover:bg-[#1a1a1a] shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all cursor-default"
+                  className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 p-5 rounded-[24px] flex items-start gap-5 group hover:border-white/20 hover:bg-white/[0.08] shadow-[0_10px_40px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(255,255,255,0.05)] transition-all cursor-default"
                 >
                   <div className="mt-0.5 bg-white/5 p-2.5 rounded-full border border-white/5 group-hover:bg-[#8B5CF6]/10 group-hover:border-[#8B5CF6]/30 transition-all">
                     {benefit.icon}
