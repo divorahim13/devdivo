@@ -235,24 +235,32 @@ const Hero = () => {
 
   const cards = [
     {
+      num: '01',
+      tag: 'CORE',
       title: 'Frontend Development',
-      description: 'Membangun antarmuka website yang modern, responsif, cepat, dan nyaman digunakan di semua perangkat.',
-      icon: <Monitor className="text-white w-5 h-5" />,
+      description: 'Membangun antarmuka website yang modern, responsif, cepat, dan nyaman digunakan di semua perangkat. Animasi mulus adalah standar saya.',
+      icon: <Monitor strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
     {
-      title: 'Backend Development',
-      description: 'Mengembangkan backend, API, dan logic sistem yang stabil, aman, dan scalable untuk kebutuhan bisnis.',
-      icon: <Server className="text-white w-5 h-5" />,
+      num: '02',
+      tag: 'INFRA',
+      title: 'Backend & Systems',
+      description: 'Mengembangkan backend, API, dan logic sistem yang stabil, aman, dan scalable. Memastikan perlindungan penuh lalu lintas data Anda.',
+      icon: <Server strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
     {
-      title: 'Database & Integration',
-      description: 'Mengelola database, dashboard admin, integrasi form, email, payment, dan kebutuhan sistem lainnya.',
-      icon: <Database className="text-white w-5 h-5" />,
+      num: '03',
+      tag: 'DATA',
+      title: 'Database & Cloud',
+      description: 'Merancang arsitektur database, dashboard admin khusus, hingga integrasi mulus dengan pihak ketiga (Payment, Email, CRM).',
+      icon: <Database strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
     {
+      num: '04',
+      tag: 'GROWTH',
       title: 'SEO & Performance',
-      description: 'Membangun website dengan struktur yang SEO-friendly, loading cepat, metadata yang rapi, dan siap bersaing di Google.',
-      icon: <Network className="text-white w-5 h-5" />,
+      description: 'Struktur SEO-friendly berlapis, loading super cepat, dan optimasi Core Web Vitals skala dewa untuk memenangkan pencarian Google.',
+      icon: <Network strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
   ];
 
@@ -351,27 +359,54 @@ const Hero = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 w-full max-w-7xl mx-auto">
           {cards.map((card, index) => (
             <motion.div
               key={card.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05, rotateZ: index % 2 === 0 ? 2 : -2, y: -10 }}
+              whileHover={{ y: -6 }}
               viewport={{ once: false, amount: 0.1 }}
-              transition={{ 
-                delay: index * 0.1, duration: 0.5, 
-                rotateZ: { duration: 0.3 }, scale: { duration: 0.3 } 
-              }}
-              className="bg-white/[0.02] backdrop-blur-3xl border border-white/[0.05] p-10 rounded-[40px] flex flex-col h-full group hover:bg-white/[0.04] hover:shadow-[0_20px_40px_rgba(91,33,182,0.3)] hover:border-[#5B21B6]/50 transition-colors duration-500 cursor-pointer"
+              transition={{ delay: index * 0.1, duration: 0.4, ease: "easeOut" }}
+              className="group relative flex flex-col h-full bg-[#05050A] border border-[#1A1A24] rounded-2xl overflow-hidden cursor-default transition-all duration-300 hover:border-[#2D2D44] hover:bg-[#08080C] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
             >
-              <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-12 group-hover:scale-110 transition-transform duration-500">
-                {card.icon}
+              {/* Subtle top spotlight on hover */}
+              <div className="absolute inset-x-0 top-0 h-[150px] bg-[radial-gradient(ellipse_at_top,_rgba(99,102,241,0.08),_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              {/* Technical Accent Line */}
+              <div className="absolute top-0 left-6 w-8 h-[2px] bg-[#4F46E5]/40 group-hover:bg-[#6366F1] group-hover:w-16 transition-all duration-300 z-10" />
+              
+              {/* Inner subtle top highlight to simulate bevel / hardware edge */}
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="p-8 flex flex-col h-full z-10">
+                {/* Header: Numeral + Icon Box */}
+                <div className="flex justify-between items-start mb-16">
+                  <span className="text-[#3F3F5A] font-display font-bold text-sm tracking-wide">{card.num} //</span>
+                  <div className="w-11 h-11 border border-[#1A1A24] bg-[#0A0A0F]/50 rounded-lg flex items-center justify-center group-hover:border-[#4F46E5]/40 transition-colors duration-300 shadow-[inset_0_1px_3px_rgba(255,255,255,0.02)]">
+                    {card.icon}
+                  </div>
+                </div>
+
+                {/* Body Content */}
+                <div className="mt-auto">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-[#6366F1] mb-2 font-bold opacity-70 group-hover:opacity-100 transition-opacity">
+                    {card.tag}
+                  </div>
+                  <h3 className="text-xl md:text-[22px] font-display font-bold text-white mb-3 leading-tight tracking-tight">
+                    {card.title}
+                  </h3>
+                  <p className="text-[#8E8E99] font-sans text-sm leading-relaxed font-medium transition-colors duration-300 group-hover:text-[#A1A1AA]">
+                    {card.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-display font-bold text-white mb-5 tracking-tight">{card.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed flex-grow font-sans font-medium">
-                {card.description}
-              </p>
+
+              {/* Technical Detail Dots */}
+              <div className="absolute bottom-6 right-6 flex gap-1.5 opacity-[0.15] group-hover:opacity-[0.4] transition-opacity duration-300">
+                <div className="w-1 h-1 bg-white rounded-sm" />
+                <div className="w-1 h-1 bg-white rounded-sm" />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -401,11 +436,11 @@ const ProjectsSection = () => {
   }, { scope: containerRef });
   
   const projects = [
-    { id: 1, title: 'Cloudy', subtitle: 'App Design', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=800&fit=crop' },
-    { id: 2, title: 'Dummies', subtitle: 'Web Dev', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=800&fit=crop' },
-    { id: 3, title: 'Glue', subtitle: 'Systems', img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=800&fit=crop' },
-    { id: 4, title: 'Above mummies', subtitle: 'UI/UX', img: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=800&fit=crop' },
-    { id: 5, title: 'Ellenor', subtitle: 'Mobile App', img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=800&fit=crop' },
+    { id: 1, title: 'Aero 3D', subtitle: 'Interactive Product', img: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&h=800&fit=crop' },
+    { id: 2, title: 'Fluidify', subtitle: 'WebGL Agency', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop' },
+    { id: 3, title: 'SneakXR', subtitle: '3D Configurator', img: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&h=800&fit=crop' },
+    { id: 4, title: 'Odyssey', subtitle: 'Scrollytelling', img: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&h=800&fit=crop' },
+    { id: 5, title: 'Nexus UI', subtitle: 'Bento Dashboard', img: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=800&fit=crop' },
   ];
 
   return (
@@ -425,7 +460,7 @@ const ProjectsSection = () => {
       </div>
 
       {/* Desktop Fanned Layout */}
-      <div ref={containerRef} className="hidden md:flex relative w-full max-w-7xl h-[600px] items-center justify-center perspective-2000">
+      <div ref={containerRef} className="hidden md:flex relative w-full max-w-7xl h-[750px] items-center justify-center perspective-2000 mt-8">
         <div className="flex items-center justify-center -space-x-48 transform-gpu">
           {projects.map((project, index) => {
             const isHovered = hoveredIndex === index;
@@ -453,7 +488,7 @@ const ProjectsSection = () => {
                   dragElastic={0.4}
                   whileDrag={{ scale: 1.1, cursor: "grabbing" }}
                   animate={{
-                    y: isHovered ? -160 : defaultY,
+                    y: isHovered ? -100 : defaultY,
                     x: isHovered ? 0 : defaultX,
                     rotate: isHovered ? 0 : defaultRotate,
                     scale: isHovered ? 1.15 : (isAnyHovered ? 0.85 : 1),
@@ -503,7 +538,7 @@ const ProjectsSection = () => {
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="absolute top-10 right-10 z-30"
+                    className="absolute bottom-10 right-10 md:bottom-12 md:right-12 z-30"
                   >
                     <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white pl-8 pr-3 py-3 rounded-full text-sm font-black flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-white/20 transition-all">
                       View
