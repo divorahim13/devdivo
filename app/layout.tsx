@@ -14,11 +14,14 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Jasa Pembuatan Website Jakarta Timur & Cibubur | Divo Khairul',
-  description: 'Jasa pembuatan website profesional oleh Divo Khairul. Melayani klien Jakarta Timur, Cibubur, Nasional, hingga Internasional. Website modern, cepat, dan SEO-friendly.',
+  title: 'Divo Khairul - Software Engineer & Digital Creator',
+  description: 'Personal portfolio of Divo Khairul, a Full Stack Developer specializing in modern, high-performance web applications, immersive UI/UX, and complex system architectures.',
+  icons: {
+    icon: '/icon.svg',
+  },
   openGraph: {
-    title: 'Jasa Pembuatan Website Jakarta Timur & Cibubur | Divo Khairul',
-    description: 'Jasa pembuatan website profesional oleh Divo Khairul. Melayani klien Jakarta Timur, Cibubur, Nasional, hingga Internasional. Website modern, cepat, dan SEO-friendly.',
+    title: 'Divo Khairul - Software Engineer',
+    description: 'Personal portfolio of Divo Khairul, specializing in modern, high-performance web applications.',
     url: 'https://divokhairul.com',
     siteName: 'Divo Khairul Portfolio',
     type: 'website',
@@ -28,21 +31,15 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Divo Khairul - Full Stack Developer",
-    "description": "Jasa pembuatan website profesional oleh Divo Khairul. Melayani klien Jakarta Timur, Cibubur, Nasional, hingga Internasional.",
-    "areaServed": ["Jakarta Timur", "Cibubur", "Indonesia", "Global"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Jakarta Timur",
-      "addressRegion": "Jakarta",
-      "addressCountry": "ID"
-    },
-    "priceRange": "$$"
+    "@type": "Person",
+    "name": "Divo Khairul",
+    "jobTitle": "Full Stack Developer",
+    "description": "Software Engineer & Digital Creator specializing in modern, high-performance web applications.",
+    "url": "https://divokhairul.com"
   };
 
   return (
-    <html lang="id" className={`${inter.variable} ${spaceGrotesk.variable} dark`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} dark`}>
       <head>
         <script
           type="application/ld+json"
