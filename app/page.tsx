@@ -140,7 +140,7 @@ const Hero = () => {
         {/* Mobile Layout Fallback */}
         <div className="lg:hidden relative z-30 w-full mt-auto space-y-6 text-center pb-8 pt-6 pointer-events-auto">
            <p className="text-white/90 text-sm md:text-base px-2 sm:px-10 font-medium drop-shadow-lg backdrop-blur-sm bg-black/20 p-4 rounded-3xl border border-white/5">
-            Spesialis jasa pembuatan website Jakarta Timur & Cibubur. Saya merancang antarmuka yang memadukan estetika dan fungsionalitas untuk pengalaman digital yang modern dan SEO-friendly.
+            Full Stack Developer yang berfokus pada pengembangan aplikasi web modern dan berkinerja tinggi. Saya merancang antarmuka yang memadukan estetika dan fungsionalitas untuk pengalaman digital yang luar biasa.
           </p>
           <div className="flex justify-center gap-4">
              <button className="flex items-center gap-2 bg-[#5B21B6] text-white px-8 py-4 rounded-full font-bold shadow-[0_0_30px_rgba(91,33,182,0.6)] hover:bg-[#4C1D95] transition-colors">
@@ -185,7 +185,7 @@ const Hero = () => {
         className="absolute left-10 xl:left-20 top-1/2 -translate-y-1/2 max-w-[280px] hidden lg:block font-sans z-30 pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <p className="text-white/90 text-sm leading-relaxed mb-6 font-medium bg-black/30 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-2xl">
-          Spesialis jasa pembuatan website Jakarta Timur & Cibubur. Saya merancang antarmuka yang memadukan estetika dan fungsionalitas untuk pengalaman digital yang modern dan SEO-friendly.
+          Full Stack Developer yang berfokus pada pengembangan aplikasi web modern dan berkinerja tinggi. Saya merancang antarmuka yang memadukan estetika dan fungsionalitas untuk pengalaman digital yang luar biasa.
         </p>
         <div className="flex gap-4 px-2">
           {[Twitter, Instagram, Youtube].map((Icon, i) => (
@@ -213,7 +213,7 @@ const Hero = () => {
         className="absolute right-10 xl:right-20 top-1/2 -translate-y-1/2 max-w-[280px] hidden lg:block text-right font-sans z-30 pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <p className="text-white/90 text-sm leading-relaxed mb-8 font-medium bg-black/30 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-2xl">
-          Menghadirkan layanan jasa pembuatan website profesional, mulai dari UI/UX yang responsif, fungsionalitas sistem yang kompleks, hingga optimasi SEO di halaman pertama Google.
+          Membangun ekosistem digital yang komprehensif, mulai dari desain UI/UX yang dinamis, arsitektur sistem yang kompleks, hingga optimasi performa tingkat tinggi.
         </p>
         <motion.button 
           whileHover={{ scale: 1.05 }}
@@ -309,7 +309,7 @@ const Hero = () => {
               viewport={{ once: false, amount: 0.1 }}
               className="text-[10px] uppercase tracking-[0.4em] text-[#4ade80] mb-6 font-display font-bold"
             >
-              JASA PEMBUATAN WEBSITE JAKARTA TIMUR & CIBUBUR
+              SOFTWARE ENGINEER & DIGITAL CREATOR
             </motion.span>
             <motion.h2 
               initial={{ opacity: 0, x: 20 }}
@@ -328,7 +328,7 @@ const Hero = () => {
               transition={{ delay: 0.15 }}
               className="text-white/70 text-base md:text-lg leading-relaxed mb-6 font-medium"
             >
-              Saya adalah Full Stack Developer penyedia jasa pembuatan website Jakarta Timur dan jasa pembuatan website Cibubur yang berfokus pada website modern, scalable, dan SEO-friendly untuk bisnis, personal brand, UMKM, dan perusahaan. Saya siap menskalakan bisnis Anda dengan membangun solusi end-to-end, mulai dari UI/UX yang responsif hingga arsitektur backend, API, dan integrasi yang stabil.
+              Saya adalah Full Stack Developer yang berfokus pada pengembangan aplikasi web modern, scalable, dan high-performance. Dengan keahlian end-to-end, saya membangun solusi teknologi yang solid, mulai dari perancangan UI/UX yang memukau hingga arsitektur backend, API, dan integrasi sistem yang komprehensif.
             </motion.p>
 
             <motion.p
@@ -338,7 +338,7 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="text-white/50 text-sm leading-relaxed mb-10 font-bold border-l-2 border-[#5B21B6] pl-4 italic"
             >
-              Solusi terbaik untuk Anda yang mencari jasa pembuatan website Jakarta Timur dan jasa pembuatan website Cibubur dengan kualitas premium, keamanan terjamin, dan traffic tinggi.
+              Berdedikasi untuk terus berinovasi dan mengeksplorasi teknologi terbaru, memastikan setiap baris kode yang ditulis memberikan performa maksimal dan kualitas premium.
             </motion.p>
 
             <motion.div 
@@ -436,11 +436,11 @@ const ProjectsSection = () => {
   }, { scope: containerRef });
   
   const projects = [
-    { id: 1, title: 'Aero 3D', subtitle: 'Interactive Product', img: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&h=800&fit=crop' },
-    { id: 2, title: 'Fluidify', subtitle: 'WebGL Agency', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop' },
-    { id: 3, title: 'SneakXR', subtitle: '3D Configurator', img: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&h=800&fit=crop' },
-    { id: 4, title: 'Odyssey', subtitle: 'Scrollytelling', img: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&h=800&fit=crop' },
-    { id: 5, title: 'Nexus UI', subtitle: 'Bento Dashboard', img: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=800&fit=crop' },
+    { id: 1, title: 'RentSwift', subtitle: 'Car Rental', img: 'https://image.thum.io/get/width/600/crop/800/https://carrentaldivo.vercel.app/', href: 'https://carrentaldivo.vercel.app/' },
+    { id: 2, title: 'RoxPass', subtitle: 'Top Up Platform', img: 'https://image.thum.io/get/width/600/crop/800/https://roxpassdivo.vercel.app/', href: 'https://roxpassdivo.vercel.app/' },
+    { id: 3, title: 'DataVue', subtitle: 'Analytics Dashboard', img: 'https://image.thum.io/get/width/600/crop/800/https://datavuedivo-chi.vercel.app/', href: 'https://datavuedivo-chi.vercel.app/' },
+    { id: 4, title: 'Crewcuts', subtitle: 'Barbershop', img: 'https://image.thum.io/get/width/600/crop/800/https://crewcutsbarbershopbydivo.vercel.app/', href: 'https://crewcutsbarbershopbydivo.vercel.app/' },
+    { id: 5, title: 'Nexus', subtitle: 'SAAS Landing', img: 'https://image.thum.io/get/width/600/crop/800/https://nexus-seven-rose.vercel.app/', href: 'https://nexus-seven-rose.vercel.app/' },
   ];
 
   return (
@@ -540,12 +540,12 @@ const ProjectsSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     className="absolute bottom-10 right-10 md:bottom-12 md:right-12 z-30"
                   >
-                    <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white pl-8 pr-3 py-3 rounded-full text-sm font-black flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-white/20 transition-all">
+                    <a href={project.href} target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white pl-8 pr-3 py-3 rounded-full text-sm font-black flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-white/20 transition-all pointer-events-auto">
                       View
                       <span className="bg-[#8B5CF6] text-white rounded-full p-2 shadow-[0_0_15px_#8B5CF6]">
                         <ArrowUpRight size={18} strokeWidth={3} />
                       </span>
-                    </button>
+                    </a>
                   </motion.div>
                 )}
               </motion.div>
@@ -584,9 +584,9 @@ const ProjectsSection = () => {
               <p className="text-white/80 text-xs font-medium uppercase tracking-[0.2em]">{project.subtitle}</p>
             </div>
             
-            <button className="absolute top-6 right-6 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+            <a href={project.href} target="_blank" rel="noopener noreferrer" className="absolute top-6 right-6 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform pointer-events-auto">
               <ArrowUpRight size={18} strokeWidth={2.5} />
-            </button>
+            </a>
           </motion.div>
         ))}
       </div>
@@ -764,28 +764,28 @@ const ContactSection = () => {
   const benefits = [
     {
       icon: <Zap className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Selesai Hitungan Hari",
-      desc: "Proses pembuatan website profesional super cepat. Siap rilis dalam 3-5 hari kerja tanpa mengorbankan kualitas."
+      title: "Performa & Efisiensi",
+      desc: "Mengutamakan kode yang bersih, efisien, dan optimasi arsitektur untuk memastikan aplikasi berjalan dengan performa terbaik."
     },
     {
       icon: <Shield className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Harga Transparan & Ramah UMKM",
-      desc: "Layanan jasa pembuatan website dengan harga jujur se-Jakarta Timur. 1 biaya lengkap, tanpa biaya tersembunyi."
+      title: "Arsitektur Skalabel",
+      desc: "Merancang sistem yang mumpuni untuk pertumbuhan jangka panjang, dengan struktur database dan cloud yang aman."
     },
     {
       icon: <MousePointer2 className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Terima Beres (Bebas Pusing IT)",
-      desc: "Domain, hosting, instalasi sistem, hingga SEO saya tangani sepenuhnya. Anda cukup fokus urus bisnis."
+      title: "End-to-End Development",
+      desc: "Mampu menguasai seluruh siklus pengembangan, mulai dari desain antarmuka, interaktif frontend, hingga integrasi backend."
     },
     {
       icon: <Brush className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Desain Kustom Premium",
-      desc: "Website custom & eksklusif sesuai identitas brand Anda. Bukan hasil copy-paste dari template pasaran."
+      title: "UI/UX & Animasi Premium",
+      desc: "Fokus pada detail visual dan interaksi pengguna yang modern, memanfaatkan prinsip desain mutakhir."
     },
     {
       icon: <Handshake className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Support Purna Jual Handal",
-      desc: "Vendor lain menghilang setelah lunas? Saya garansi ketersediaan dukungan maintenance setelah website live."
+      title: "Continuous Learning",
+      desc: "Berdedikasi untuk terus mengeksplorasi teknologi terbaru, memastikan implementasi stack teknologi yang relevan."
     }
   ];
 
@@ -835,7 +835,7 @@ const ContactSection = () => {
 
           {/* Why Work With Me Section */}
           <div className="relative max-w-lg w-full flex flex-col gap-5 mt-4">
-            <h3 className="text-white/40 font-display font-bold text-[10px] uppercase tracking-[0.2em] pl-1">Kenapa Memilih Layanan Saya?</h3>
+            <h3 className="text-white/40 font-display font-bold text-[10px] uppercase tracking-[0.2em] pl-1">Nilai Utama & Etos Kerja</h3>
             <div className="flex flex-col gap-3">
               {benefits.map((benefit, i) => (
                 <motion.div 

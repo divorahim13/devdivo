@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Divo Khairul - Personal Portfolio
 
-# Run and deploy your AI Studio app
+A sleek, modern, and high-performance personal portfolio showcasing my software engineering and frontend development skills. Built with an emphasis on immersive UI/UX, complex animations, and clean architecture.
 
-This contains everything you need to run your app locally.
+## Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/3c379afb-8df9-4a01-ad1a-894f189b82d1
+This project was developed using modern web technologies to ensure a fast, accessible, and cinematic user experience:
+
+- **Framework:** [Next.js](https://nextjs.org/)
+- **UI & Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+## Features
+
+- **Cinematic Interactions:** Complex scrolling effects, hover animations, and parallax backgrounds powered by Framer Motion and GSAP.
+- **Dynamic Projects Showcase:** Interactive 3D card deck layout for featured projects, with live API-driven thumbnail generation.
+- **Fully Responsive:** Meticulously optimized for all screen sizes, from mobile devices to ultra-wide desktop displays.
+- **Dark Mode Aesthetic:** Sleek, tech-focused dark theme with glassmorphism components and subtle glowing neon accents.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js (v18 or higher)
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
