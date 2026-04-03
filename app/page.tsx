@@ -140,7 +140,7 @@ const Hero = () => {
         {/* Mobile Layout Fallback */}
         <div className="lg:hidden relative z-30 w-full mt-auto space-y-6 text-center pb-8 pt-6 pointer-events-auto">
            <p className="text-white/90 text-sm md:text-base px-2 sm:px-10 font-medium drop-shadow-lg backdrop-blur-sm bg-black/20 p-4 rounded-3xl border border-white/5">
-            Full Stack Developer yang berfokus pada pengembangan aplikasi web modern dan berkinerja tinggi. Saya merancang antarmuka yang memadukan estetika dan fungsionalitas untuk pengalaman digital yang luar biasa.
+            Full Stack Developer focused on building modern, high-performance web applications. I design interfaces that seamlessly blend aesthetics with functionality for an exceptional digital experience.
           </p>
           <div className="flex justify-center gap-4">
              <button className="flex items-center gap-2 bg-[#5B21B6] text-white px-8 py-4 rounded-full font-bold shadow-[0_0_30px_rgba(91,33,182,0.6)] hover:bg-[#4C1D95] transition-colors">
@@ -185,7 +185,7 @@ const Hero = () => {
         className="absolute left-10 xl:left-20 top-1/2 -translate-y-1/2 max-w-[280px] hidden lg:block font-sans z-30 pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <p className="text-white/90 text-sm leading-relaxed mb-6 font-medium bg-black/30 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-2xl">
-          Full Stack Developer yang berfokus pada pengembangan aplikasi web modern dan berkinerja tinggi. Saya merancang antarmuka yang memadukan estetika dan fungsionalitas untuk pengalaman digital yang luar biasa.
+          Full Stack Developer focused on building modern, high-performance web applications. I design interfaces that seamlessly blend aesthetics with functionality for an exceptional digital experience.
         </p>
         <div className="flex gap-4 px-2">
           {[Twitter, Instagram, Youtube].map((Icon, i) => (
@@ -213,7 +213,7 @@ const Hero = () => {
         className="absolute right-10 xl:right-20 top-1/2 -translate-y-1/2 max-w-[280px] hidden lg:block text-right font-sans z-30 pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <p className="text-white/90 text-sm leading-relaxed mb-8 font-medium bg-black/30 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-2xl">
-          Membangun ekosistem digital yang komprehensif, mulai dari desain UI/UX yang dinamis, arsitektur sistem yang kompleks, hingga optimasi performa tingkat tinggi.
+          Building comprehensive digital ecosystems, from dynamic UI/UX design and complex system architectures to high-level performance optimization.
         </p>
         <motion.button 
           whileHover={{ scale: 1.05 }}
@@ -238,28 +238,28 @@ const Hero = () => {
       num: '01',
       tag: 'CORE',
       title: 'Frontend Development',
-      description: 'Membangun antarmuka website yang modern, responsif, cepat, dan nyaman digunakan di semua perangkat. Animasi mulus adalah standar saya.',
+      description: 'Building modern, responsive, fast, and user-friendly web interfaces across all devices. Seamless animations are my standard.',
       icon: <Monitor strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
     {
       num: '02',
       tag: 'INFRA',
       title: 'Backend & Systems',
-      description: 'Mengembangkan backend, API, dan logic sistem yang stabil, aman, dan scalable. Memastikan perlindungan penuh lalu lintas data Anda.',
+      description: 'Developing stable, secure, and scalable backends, APIs, and system logic. Ensuring full protection of your data traffic.',
       icon: <Server strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
     {
       num: '03',
       tag: 'DATA',
       title: 'Database & Cloud',
-      description: 'Merancang arsitektur database, dashboard admin khusus, hingga integrasi mulus dengan pihak ketiga (Payment, Email, CRM).',
+      description: 'Designing database architectures, custom admin dashboards, and seamless third-party integrations (Payments, Emails, CRM).',
       icon: <Database strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
     {
       num: '04',
       tag: 'GROWTH',
       title: 'SEO & Performance',
-      description: 'Struktur SEO-friendly berlapis, loading super cepat, dan optimasi Core Web Vitals skala dewa untuk memenangkan pencarian Google.',
+      description: 'Multi-layered SEO-friendly structure, lightning-fast loading, and elite Core Web Vitals optimization to dominate Google search rankings.',
       icon: <Network strokeWidth={1.5} className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />,
     },
   ];
@@ -328,7 +328,7 @@ const Hero = () => {
               transition={{ delay: 0.15 }}
               className="text-white/70 text-base md:text-lg leading-relaxed mb-6 font-medium"
             >
-              Saya adalah Full Stack Developer yang berfokus pada pengembangan aplikasi web modern, scalable, dan high-performance. Dengan keahlian end-to-end, saya membangun solusi teknologi yang solid, mulai dari perancangan UI/UX yang memukau hingga arsitektur backend, API, dan integrasi sistem yang komprehensif.
+              I am a Full Stack Developer focused on building modern, scalable, and high-performance web applications. With end-to-end expertise, I build solid technological solutions, from designing stunning UI/UX to comprehensive backend architecture, APIs, and system integrations.
             </motion.p>
 
             <motion.p
@@ -338,7 +338,7 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="text-white/50 text-sm leading-relaxed mb-10 font-bold border-l-2 border-[#5B21B6] pl-4 italic"
             >
-              Berdedikasi untuk terus berinovasi dan mengeksplorasi teknologi terbaru, memastikan setiap baris kode yang ditulis memberikan performa maksimal dan kualitas premium.
+              Dedicated to continuous innovation and exploring the latest technologies, ensuring every line of code written delivers maximum performance and premium quality.
             </motion.p>
 
             <motion.div 
@@ -349,10 +349,10 @@ const Hero = () => {
               className="flex flex-wrap gap-4 md:gap-6"
             >
               <a href="#work" className="bg-[#5B21B6] border border-[#5B21B6] text-white px-8 md:px-10 py-4 font-display rounded-full text-sm font-bold tracking-tight hover:bg-[#4C1D95] transition-all shadow-[0_0_20px_rgba(91,33,182,0.4)] text-center">
-                Lihat Project
+                View Projects
               </a>
               <a href="#contact" className="border border-white/20 text-white px-8 md:px-10 py-4 font-display rounded-full text-sm font-bold tracking-tight hover:bg-white/5 transition-all text-center">
-                Hubungi Saya
+                Contact Me
               </a>
             </motion.div>
           </div>
@@ -764,28 +764,28 @@ const ContactSection = () => {
   const benefits = [
     {
       icon: <Zap className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Performa & Efisiensi",
-      desc: "Mengutamakan kode yang bersih, efisien, dan optimasi arsitektur untuk memastikan aplikasi berjalan dengan performa terbaik."
+      title: "Performance & Efficiency",
+      desc: "Prioritizing clean, efficient code and architectural optimization to ensure applications run at peak performance."
     },
     {
       icon: <Shield className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Arsitektur Skalabel",
-      desc: "Merancang sistem yang mumpuni untuk pertumbuhan jangka panjang, dengan struktur database dan cloud yang aman."
+      title: "Scalable Architecture",
+      desc: "Designing robust systems built for long-term growth, with secure database and cloud structures."
     },
     {
       icon: <MousePointer2 className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
       title: "End-to-End Development",
-      desc: "Mampu menguasai seluruh siklus pengembangan, mulai dari desain antarmuka, interaktif frontend, hingga integrasi backend."
+      desc: "Mastering the entire development life cycle, from interface design and interactive frontends to backend integration."
     },
     {
       icon: <Brush className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "UI/UX & Animasi Premium",
-      desc: "Fokus pada detail visual dan interaksi pengguna yang modern, memanfaatkan prinsip desain mutakhir."
+      title: "UI/UX & Premium Animations",
+      desc: "Focusing on visual details and modern user interactions, utilizing cutting-edge design principles."
     },
     {
       icon: <Handshake className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
       title: "Continuous Learning",
-      desc: "Berdedikasi untuk terus mengeksplorasi teknologi terbaru, memastikan implementasi stack teknologi yang relevan."
+      desc: "Dedicated to continuously exploring the latest technologies, ensuring the implementation of relevant tech stacks."
     }
   ];
 
@@ -835,7 +835,7 @@ const ContactSection = () => {
 
           {/* Why Work With Me Section */}
           <div className="relative max-w-lg w-full flex flex-col gap-5 mt-4">
-            <h3 className="text-white/40 font-display font-bold text-[10px] uppercase tracking-[0.2em] pl-1">Nilai Utama & Etos Kerja</h3>
+            <h3 className="text-white/40 font-display font-bold text-[10px] uppercase tracking-[0.2em] pl-1">Core Values & Work Ethic</h3>
             <div className="flex flex-col gap-3">
               {benefits.map((benefit, i) => (
                 <motion.div 
