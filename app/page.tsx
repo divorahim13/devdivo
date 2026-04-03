@@ -897,6 +897,7 @@ const ContactSection = () => {
               <motion.div 
                 initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}
                 className="space-y-3"
+                suppressHydrationWarning
               >
                 <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">First name</label>
                 <motion.input 
@@ -912,6 +913,7 @@ const ContactSection = () => {
               <motion.div 
                 initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
                 className="space-y-3"
+                suppressHydrationWarning
               >
                 <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Last name</label>
                 <motion.input 
@@ -929,6 +931,7 @@ const ContactSection = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
               className="space-y-3"
+              suppressHydrationWarning
             >
               <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Email</label>
               <motion.input 
@@ -945,6 +948,7 @@ const ContactSection = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
               className="space-y-3"
+              suppressHydrationWarning
             >
               <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Phone number</label>
               <div className="flex gap-4">
@@ -969,6 +973,7 @@ const ContactSection = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}
               className="space-y-3"
+              suppressHydrationWarning
             >
               <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Message</label>
               <motion.textarea 
