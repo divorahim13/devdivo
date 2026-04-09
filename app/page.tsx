@@ -49,7 +49,7 @@ const Navbar = () => {
               href={item.href}
               whileHover={{ scale: 1.1, color: "#fff" }}
               whileTap={{ scale: 0.95 }}
-              className="px-5 py-2 rounded-full text-[10px] uppercase tracking-[0.25em] font-display font-bold transition-colors text-white/50 hover:bg-white/5 relative group/link"
+              className="px-3 md:px-5 py-2 rounded-full text-[9px] md:text-[10px] uppercase tracking-[0.15em] md:tracking-[0.25em] font-display font-bold transition-colors text-white/50 hover:bg-white/5 relative group/link"
             >
               {item.name}
               <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-[#4ade80] transition-all group-hover/link:w-1/2 shadow-[0_0_8px_#4ade80]" />
@@ -102,19 +102,19 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-purple-900/30 to-black z-0 pointer-events-none" />
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center justify-between h-screen pt-24 pb-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center justify-start lg:justify-between h-[100dvh] pt-[15dvh] lg:pt-24 pb-12">
         
         {/* Top Spacer to push content center/bottom if needed */}
-        <div className="flex-1 w-full flex flex-col items-center justify-center relative">
+        <div className="flex-1 w-full flex flex-col items-center justify-start lg:justify-center relative">
           
           {/* Name Title */}
-          <div className="absolute top-[20%] md:top-[30%] lg:top-[35%] left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-10 gap-0">
+          <div className="w-full text-center pointer-events-none select-none z-10 gap-0 mb-6 lg:mb-0 lg:absolute lg:top-[35%] lg:left-1/2 lg:-translate-x-1/2">
             <motion.h1 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false, amount: 0.1 }}
               transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
-              className="text-[18vw] md:text-[14vw] lg:text-[12vw] font-display font-bold text-white leading-none tracking-tighter mix-blend-plus-lighter drop-shadow-2xl flex flex-col md:flex-row items-center justify-center md:gap-8"
+              className="text-[14vw] sm:text-[12vw] md:text-[14vw] lg:text-[12vw] font-display font-bold text-white leading-none tracking-tighter mix-blend-plus-lighter drop-shadow-2xl flex flex-col md:flex-row items-center justify-center md:gap-8"
             >
               <motion.span 
                 initial={{ opacity: 0, y: 50 }} 
@@ -135,18 +135,18 @@ const Hero = () => {
             </motion.h1>
           </div>
 
-        </div>
-
-        {/* Mobile Layout Fallback */}
-        <div className="lg:hidden relative z-30 w-full mt-auto space-y-6 text-center pb-8 pt-6 pointer-events-auto">
-           <p className="text-white/90 text-sm md:text-base px-2 sm:px-10 font-medium drop-shadow-lg backdrop-blur-sm bg-black/20 p-4 rounded-3xl border border-white/5">
-            Full Stack Developer focused on building modern, high-performance web applications. I design interfaces that seamlessly blend aesthetics with functionality for an exceptional digital experience.
-          </p>
-          <div className="flex justify-center gap-4">
-             <button className="flex items-center gap-2 bg-[#5B21B6] text-white px-8 py-4 rounded-full font-bold shadow-[0_0_30px_rgba(91,33,182,0.6)] hover:bg-[#4C1D95] transition-colors">
-              Let&apos;s Talk <ArrowUpRight size={18} />
-            </button>
+          {/* Mobile Layout Fallback */}
+          <div className="lg:hidden relative z-40 w-full max-w-sm mx-auto space-y-4 text-center pointer-events-auto">
+             <p className="text-white text-xs sm:text-sm font-medium border border-white/10 shadow-2xl backdrop-blur-md bg-black/40 p-5 rounded-3xl mx-2">
+              Full Stack Developer focused on building modern, high-performance web applications. I design interfaces that seamlessly blend aesthetics with functionality for an exceptional digital experience.
+            </p>
+            <div className="flex justify-center gap-4">
+               <button className="flex items-center gap-2 bg-[#5B21B6] text-white px-6 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(91,33,182,0.6)] hover:bg-[#4C1D95] transition-colors text-sm">
+                Let&apos;s Talk <ArrowUpRight size={16} />
+              </button>
+            </div>
           </div>
+          
         </div>
       </div>
 
@@ -161,7 +161,7 @@ const Hero = () => {
         {/* Subtle Purple Glow Behind Portrait */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[250px] h-[300px] sm:w-[350px] sm:h-[400px] md:w-[450px] md:h-[500px] bg-[#8B5CF6]/40 rounded-full blur-[80px] pointer-events-none opacity-80" />
         
-        <div className="relative w-[320px] h-[400px] sm:w-[400px] sm:h-[500px] md:w-[500px] md:h-[600px] lg:w-[600px] lg:h-[750px] xl:w-[700px] xl:h-[850px]">
+        <div className="relative w-[250px] h-[300px] sm:w-[350px] sm:h-[420px] md:w-[500px] md:h-[600px] lg:w-[600px] lg:h-[750px] xl:w-[700px] xl:h-[850px]">
           <Image
             src="/images/divo-aurora.png"
             alt="Divo Khairul"
@@ -316,7 +316,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.1 }}
               transition={{ delay: 0.1 }}
-              className="text-6xl md:text-8xl font-display font-bold text-white mb-8 leading-[1.05] tracking-tight"
+              className="text-5xl md:text-8xl font-display font-bold text-white mb-8 leading-[1.05] tracking-tight"
             >
               About Me
             </motion.h2>
@@ -652,7 +652,7 @@ const SkillsSection = () => {
       </div>
 
       <div className="w-full h-[350px] sm:h-[500px] md:h-[700px] flex justify-center items-center overflow-hidden">
-        <div className="relative flex-none w-[1000px] h-[700px] scale-[0.4] sm:scale-[0.7] md:scale-100 origin-center transform-gpu">
+        <div className="relative flex-none w-[1000px] h-[700px] scale-[0.55] sm:scale-[0.8] md:scale-100 origin-center transform-gpu">
           {/* SVG Connections */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
             <defs>
