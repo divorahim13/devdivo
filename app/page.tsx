@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import gsap from 'gsap';
@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
 import { 
   Twitter, Instagram, Youtube, ArrowUpRight, Power, Cast, Eye, Bot, ChevronLeft, ChevronRight,
   Cloud, Database, Server, Smartphone, Monitor, Box, Layers, Network, Cpu, HardDrive, Share2, Shield, Code, Terminal, Atom, Map,
-  Mail, MessageCircle, Music2, Phone, Send, Zap, Tag, MousePointer2, Brush, Handshake
+  Mail, MessageCircle, Music2, Phone, Send, Zap, Tag, MousePointer2, Brush, Handshake, Check, X, CreditCard, Star
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -22,6 +22,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Work', href: '#work' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: '#contact' },
   ];
   
@@ -754,6 +755,368 @@ const SkillsSection = () => {
   );
 };
 
+const PricingSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPackageId, setSelectedPackageId] = useState('2');
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '+62 ', paymentMethod: 'Q1' });
+
+  const ref = useRef(null);
+
+  const packages = [
+    {
+      id: '1',
+      name: 'Starter Edition',
+      price: 500000,
+      priceLabel: 'Rp 500K',
+      subLabel: 'landing page',
+      description: 'Perfect for personal branding or simple product launches.',
+      pillText: 'Basic',
+      features: [
+        'Single Page Architecture',
+        'Fully Mobile Responsive',
+        'Standard Framer Motion Animations',
+        'SEO Meta Tag Optimization',
+        'Contact Form Integration',
+        'Free .com Domain (1 Year)',
+        'Vercel Global Deployment',
+        '7 Business Days Delivery',
+        'Standard Maintenance Support'
+      ]
+    },
+    {
+      id: '2',
+      name: 'Professional',
+      price: 800000,
+      priceLabel: 'Rp 800K',
+      subLabel: 'multi page',
+      description: 'Ideal for growing businesses needing a multi-page presence.',
+      pillText: 'Pro',
+      features: [
+        'Up to 5 Custom Pages',
+        'Premium UI/UX Polish',
+        'Advanced Scroll Animations',
+        'Dynamic Content Loading',
+        'Integrated Blog System',
+        'Speed & Performance Tuning',
+        'Free .com / .id Domain',
+        '14 Business Days Delivery',
+        'Priority Slack/WA Support',
+        'CMS Integration (Optional)'
+      ]
+    },
+    {
+      id: '3',
+      name: 'Enterprise',
+      price: 1000000,
+      priceLabel: 'Rp 1M',
+      subLabel: 'full stack',
+      description: 'For complex web apps, dashboards, or custom logic systems.',
+      pillText: 'App',
+      features: [
+        'Unlimited Custom Pages',
+        'Database & API Integration',
+        'Admin Dashboard Panel',
+        'User Authentication System',
+        'Payment Gateway Integration',
+        'Real-time Data Fetching',
+        'Cloudinary Asset Hosting',
+        '30 Business Days Delivery',
+        '24/7 Priority Support',
+        'Training & Documentation'
+      ]
+    }
+  ];
+
+  const selectedPackage = packages.find(p => p.id === selectedPackageId);
+
+  const handleCheckout = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          packageId: selectedPackage?.id,
+          price: selectedPackage?.price,
+          ...formData
+        })
+      });
+
+      const data = await response.json();
+      if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+      } else {
+        alert(data.error || 'Checkout failed');
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred during checkout');
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <section id="pricing" ref={ref} className="bg-black py-40 min-h-screen relative overflow-hidden font-sans flex flex-col items-center justify-center">
+      {/* 
+          ULTRA-SMOOTH TRANSITION OVERLAYS 
+          Using multiple layers to prevent any visible lines between sections
+      */}
+      <div className="absolute top-0 left-0 w-full h-80 bg-gradient-to-b from-black via-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-black via-black to-transparent z-10 pointer-events-none" />
+
+      {/* Cinematic Background Lighting */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Core bottom glow */}
+        <div className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[140%] h-[70%] bg-gradient-to-t from-[#4F46E5]/30 via-[#8B5CF6]/5 to-transparent blur-[140px] rounded-[100%]" />
+        
+        {/* Light Streaks */}
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[150%] bg-gradient-to-br from-[#3B82F6]/10 to-transparent -rotate-12 blur-[100px]" />
+        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[150%] bg-gradient-to-bl from-[#8B5CF6]/10 to-transparent rotate-12 blur-[100px]" />
+
+        {/* Dynamic Sparkles (Animated SVG) */}
+        <div className="absolute inset-0 opacity-30 mix-blend-screen">
+          <svg className="w-full h-full">
+            <filter id="noise">
+              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noise)" opacity="0.1" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
+        {/* Header Section */}
+        <motion.div
+           initial={{ opacity: 0, scale: 0.95 }}
+           whileInView={{ opacity: 1, scale: 1 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.8, ease: "easeOut" }}
+           className="text-center mb-24"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
+            <div className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+            <span className="text-white/60 text-[10px] uppercase font-bold tracking-[0.2em]">Investment Plans • 2026</span>
+          </div>
+          
+          <h2 className="text-white text-5xl md:text-8xl font-display font-medium mb-10 tracking-tight max-w-5xl leading-[0.9] text-center">
+            Investment for <br />Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#818CF8] via-[#C084FC] to-[#818CF8] bg-[length:200%_auto] animate-gradient-x">Digital Legacy.</span>
+          </h2>
+
+          <div className="flex justify-center">
+            <div className="flex items-center bg-white/[0.02] border border-white/5 rounded-full pl-3 pr-8 py-3 backdrop-blur-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+              <div className="flex -space-x-4 mr-6">
+                {[1, 2, 3, 4].map(i => (
+                  <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#1A1A24] to-[#0A0A0F] border-2 border-black shadow-2xl flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full bg-[#4F46E5]/20 flex items-center justify-center text-[10px] text-white/40 italic">D{i}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="text-left">
+                <span className="block text-white text-sm font-bold font-display leading-none mb-1">
+                  Join 1,000+ Innovators
+                </span>
+                <span className="block text-white/30 text-[10px] font-medium uppercase tracking-widest">
+                  already scaling with my solutions
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 w-full items-start mb-24">
+          {packages.map((pkg, i) => {
+            const isSelected = selectedPackageId === pkg.id;
+            const isCenter = pkg.id === '2';
+
+            return (
+              <motion.div
+                key={pkg.id}
+                onClick={() => setSelectedPackageId(pkg.id)}
+                whileHover={{ y: -15, transition: { duration: 0.4 } }}
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={`
+                  relative cursor-pointer rounded-[48px] p-10 lg:p-12 flex flex-col transition-all duration-700
+                  ${isCenter ? 'lg:-mt-8 lg:mb-[-32px] z-20 border-[#8B5CF6]/40 bg-gradient-to-b from-[#8B5CF6]/10 via-[#05050A]/80 to-[#05050A]/95' : 'z-10 bg-[#0A0A0F]/50 border-white/5 backdrop-blur-3xl'}
+                  border shadow-[0_40px_100px_rgba(0,0,0,0.5)]
+                  ${isSelected ? 'ring-1 ring-[#8B5CF6] shadow-[0_0_120px_rgba(139,92,246,0.15)]' : 'hover:border-white/10'}
+                `}
+              >
+                {/* Visual Flair for Center Card */}
+                {isCenter && (
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8Y2lyY2xlIGN4PSIxNSUiIGN5PSIyNSUiIHI9IjEiIGZpbGw9IiM4QjVDRjYiIG9wYWNpdHk9IjAuNSIvPgo8Y2lyY2xlIGN4PSI4NSUiIGN5PSIxNSUiIHI9IjEiIGZpbGw9IiMzQjgyRjYiIG9wYWNpdHk9IjAuNCIvPgo8Y2lyY2xlIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjEuNSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMyIvPgo8L3N2Zz4=')] opacity-40 pointer-events-none mix-blend-screen" />
+                )}
+
+                <div className="relative z-10 mb-12">
+                  <div className="flex justify-between items-center mb-8">
+                    <div className={`px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] border ${isSelected ? 'bg-[#8B5CF6]/20 border-[#8B5CF6] text-white' : 'bg-white/5 border-white/10 text-white/40'}`}>
+                        {pkg.pillText} Option
+                    </div>
+                    {isCenter && (
+                        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400/20 to-amber-600/20 border border-amber-500/30">
+                            <Star size={10} className="fill-amber-500 text-amber-500" />
+                            <span className="text-[9px] font-bold text-amber-500 uppercase tracking-tighter">Recommended</span>
+                        </div>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-white text-xl font-display font-medium tracking-tight mb-4">{pkg.name}</h3>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-white text-6xl font-display font-bold tracking-tighter">
+                      {pkg.priceLabel}
+                    </span>
+                    <span className="text-white/20 text-xs font-bold uppercase tracking-widest font-sans">Full Pack</span>
+                  </div>
+                  <p className="text-white/40 text-xs font-medium uppercase tracking-widest mb-6">{pkg.subLabel}</p>
+                  
+                  <p className="text-white/50 text-sm leading-relaxed min-h-[40px]">
+                    {pkg.description}
+                  </p>
+                </div>
+
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent mb-12" />
+
+                {/* Features List - Highly Detailed */}
+                <div className="relative z-10 flex-grow space-y-5 mb-12">
+                  {pkg.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-4 group/item">
+                      <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center transition-all ${isSelected ? 'bg-[#8B5CF6]/10 border-[#8B5CF6]/30 shadow-[0_0_10px_rgba(139,92,246,0.2)]' : 'bg-white/5 border-white/5'} border`}>
+                        <Check size={10} className={isSelected ? 'text-[#8B5CF6]' : 'text-white/20'} />
+                      </div>
+                      <span className="text-white/60 text-[13px] font-medium group-hover/item:text-white transition-colors leading-tight">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="relative z-10 mt-auto">
+                    <div className="flex items-center gap-3 text-white/20 text-[9px] font-bold uppercase tracking-[0.3em]">
+                        <div className="w-8 h-px bg-white/10" />
+                        Built with Passion
+                    </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Global Action Trigger */}
+        <motion.div 
+           initial={{ opacity: 0, y: 40 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.5, duration: 1 }}
+           className="relative z-20 flex flex-col items-center"
+        >
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#4F46E5] to-[#8B5CF6] rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
+              className="relative bg-white text-black px-16 py-6 rounded-full font-display font-black text-lg tracking-tight transition-all flex items-center gap-5 shadow-2xl"
+            >
+              Start Your Project with {selectedPackage?.name}
+              <div className="bg-black/5 rounded-full p-2 group-hover:bg-black/10 transition-colors">
+                  <ArrowUpRight size={24} />
+              </div>
+            </motion.button>
+          </div>
+          
+          <div className="mt-12 flex items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+             <span className="text-[10px] text-white font-bold uppercase tracking-[0.4em]">Secure Payment</span>
+             <span className="text-[10px] text-white font-bold uppercase tracking-[0.4em]">Premium Quality</span>
+             <span className="text-[10px] text-white font-bold uppercase tracking-[0.4em]">2026 Ready</span>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Modern Checkout Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-2xl" onClick={() => setIsModalOpen(false)} />
+          <motion.div 
+            initial={{ opacity: 0, y: 100, scale: 0.9 }} 
+            animate={{ opacity: 1, y: 0, scale: 1 }} 
+            exit={{ opacity: 0, y: 100, scale: 0.9 }}
+            className="bg-[#05050A] border border-white/10 rounded-[56px] p-12 lg:p-16 max-w-2xl w-full relative z-10 shadow-[0_0_120px_rgba(0,0,0,1)] overflow-hidden"
+          >
+            {/* Modal Glow Accent */}
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent" />
+
+            <button onClick={() => setIsModalOpen(false)} className="absolute top-10 right-10 text-white/30 hover:text-white transition-all bg-white/5 hover:bg-white/10 p-3 rounded-full border border-white/10">
+              <X size={20} />
+            </button>
+
+            <div className="mb-12">
+                <h3 className="text-5xl font-display font-bold text-white mb-4 tracking-tighter">Secure Checkout</h3>
+                <p className="text-white/40 text-lg leading-relaxed font-sans font-medium">
+                  Connecting with Divo for the <span className="text-white">{selectedPackage?.name}</span>. <br/>
+                  Estimated Investment: <span className="text-[#8B5CF6]">Rp {selectedPackage?.price.toLocaleString('id-ID')}</span>
+                </p>
+            </div>
+            
+            <form onSubmit={handleCheckout} className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">First Name</label>
+                  <input required value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="John" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Last Name</label>
+                  <input required value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="Doe" />
+                </div>
+              </div>
+              <div className="space-y-3">
+                <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Corporate Email</label>
+                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="j.doe@company.com" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">WhatsApp Connection</label>
+                  <input required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="+62 812..." />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Payment Method</label>
+                  <select 
+                    value={formData.paymentMethod} 
+                    onChange={(e) => setFormData({...formData, paymentMethod: e.target.value})}
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="Q1" className="bg-[#05050A] text-white">QRIS (All E-Wallets/Banks)</option>
+                    <option value="VC" className="bg-[#05050A] text-white">Credit Card (Visa/Mastercard)</option>
+                    <option value="BC" className="bg-[#05050A] text-white">BCA Virtual Account</option>
+                    <option value="M2" className="bg-[#05050A] text-white">Mandiri Virtual Account</option>
+                    <option value="BR" className="bg-[#05050A] text-white">BRI Virtual Account</option>
+                    <option value="SP" className="bg-[#05050A] text-white">ShopeePay</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="pt-8">
+                <button disabled={isLoading} type="submit" className="w-full bg-[#4F46E5] text-white py-6 rounded-[24px] font-display font-black text-xl hover:bg-[#4338CA] transition-all disabled:opacity-50 flex justify-center items-center gap-4 active:scale-[0.98] shadow-[0_20px_60px_rgba(79,70,229,0.3)]">
+                    {isLoading ? 'Establishing Secure Tunnel...' : `Confirm Transaction`}
+                    {!isLoading && <ArrowUpRight size={24} />}
+                </button>
+                <p className="text-center mt-6 text-white/20 text-[10px] uppercase font-bold tracking-[0.2em]">Powered by Duitku Secure Sockets</p>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+
 const ContactSection = () => {
   const [mounted, setMounted] = React.useState(false);
 
@@ -1014,6 +1377,7 @@ const Footer = () => {
     { name: 'About', href: '#about' },
     { name: 'Work', href: '#work' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -1131,6 +1495,7 @@ export default function Page() {
       <AboutSection />
       <ProjectsSection />
       <SkillsSection />
+      <PricingSection />
       <ContactSection />
       <Footer />
     </main>
