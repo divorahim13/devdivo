@@ -1024,7 +1024,7 @@ const PricingSection = () => {
               onClick={() => setIsModalOpen(true)}
               className="relative bg-white text-black px-16 py-6 rounded-full font-display font-black text-lg tracking-tight transition-all flex items-center gap-5 shadow-2xl"
             >
-              Start Your Project with {selectedPackage?.name}
+              Checkout - {selectedPackage?.name}
               <div className="bg-black/5 rounded-full p-2 group-hover:bg-black/10 transition-colors">
                   <ArrowUpRight size={24} />
               </div>
@@ -1076,13 +1076,25 @@ const PricingSection = () => {
                 </div>
               </div>
               <div className="space-y-3">
-                <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Corporate Email</label>
+                <div className="flex justify-between items-end pl-1 pr-2">
+                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em]">Email</label>
+                  <span className="text-white/40 text-[9px] italic">Must be active & reachable</span>
+                </div>
                 <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="j.doe@company.com" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">WhatsApp Connection</label>
-                  <input required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="+62 812..." />
+                  <div className="flex justify-between items-end pl-1 pr-2">
+                    <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em]">WhatsApp Number</label>
+                    <span className="text-white/40 text-[9px] italic">Include Country Code (+62)</span>
+                  </div>
+                  <input type="tel" required value={formData.phone} 
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      if (val && !val.startsWith('+')) val = '+' + val.replace(/\D/g, ''); 
+                      setFormData({...formData, phone: val})
+                    }} 
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="+62812..." />
                 </div>
                 <div className="space-y-3">
                   <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Payment Method</label>
