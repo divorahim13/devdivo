@@ -767,8 +767,8 @@ const PricingSection = () => {
     {
       id: '1',
       name: 'Starter Edition',
-      price: 500000,
-      priceLabel: 'Rp 500K',
+      price: 700000,
+      priceLabel: 'Rp 700K',
       subLabel: 'landing page',
       description: 'Perfect for personal branding or simple product launches.',
       pillText: 'Basic',
@@ -787,8 +787,8 @@ const PricingSection = () => {
     {
       id: '2',
       name: 'Professional',
-      price: 800000,
-      priceLabel: 'Rp 800K',
+      price: 1000000,
+      priceLabel: 'Rp 1M',
       subLabel: 'multi page',
       description: 'Ideal for growing businesses needing a multi-page presence.',
       pillText: 'Pro',
@@ -808,8 +808,8 @@ const PricingSection = () => {
     {
       id: '3',
       name: 'Enterprise',
-      price: 1000000,
-      priceLabel: 'Rp 1M',
+      price: 1500000,
+      priceLabel: 'Rp 1.5M',
       subLabel: 'full stack',
       description: 'For complex web apps, dashboards, or custom logic systems.',
       pillText: 'App',
@@ -998,510 +998,341 @@ const PricingSection = () => {
                 </div>
 
                 <div className="relative z-10 mt-auto">
-                    <div className="flex items-center gap-3 text-white/20 text-[9px] font-bold uppercase tracking-[0.3em]">
-                        <div className="w-8 h-px bg-white/10" />
-                        Built with Passion
-                    </div>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsModalOpen(true);
+                    }}
+                    className={`
+                      w-full py-5 rounded-2xl font-display font-bold text-base transition-all duration-500 flex items-center justify-center gap-3 group/btn
+                      ${isSelected ? 'bg-white text-black shadow-[0_20px_50px_rgba(255,255,255,0.2)]' : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'}
+                    `}
+                  >
+                    Invest in this Plan
+                    <ArrowUpRight size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  </button>
                 </div>
+
+                {/* Holographic Border Effect */}
+                {isSelected && (
+                  <div className="absolute inset-0 rounded-[48px] pointer-events-none overflow-hidden">
+                    <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_70%,#8B5CF6_85%,transparent_100%)] animate-[spin_4s_linear_infinite] opacity-30" />
+                  </div>
+                )}
               </motion.div>
             );
           })}
         </div>
 
-        {/* Global Action Trigger */}
-        <motion.div 
-           initial={{ opacity: 0, y: 40 }}
+        {/* Value Prop Icons */}
+        <motion.div
+           initial={{ opacity: 0, y: 50 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           transition={{ delay: 0.5, duration: 1 }}
-           className="relative z-20 flex flex-col items-center"
+           className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full border-t border-white/5 pt-16"
         >
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#4F46E5] to-[#8B5CF6] rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setIsModalOpen(true)}
-              className="relative bg-white text-black px-16 py-6 rounded-full font-display font-black text-lg tracking-tight transition-all flex items-center gap-5 shadow-2xl"
-            >
-              Checkout - {selectedPackage?.name}
-              <div className="bg-black/5 rounded-full p-2 group-hover:bg-black/10 transition-colors">
-                  <ArrowUpRight size={24} />
+          {[
+            { icon: <Shield size={20} />, title: "Secure Payment", desc: "Enterprise-grade encryption" },
+            { icon: <Zap size={20} />, title: "Fast Delivery", desc: "Agile development cycles" },
+            { icon: <MessageCircle size={20} />, title: "Direct Access", desc: "Direct line to the engineer" },
+            { icon: <ArrowUpRight size={20} />, title: "Scalable Code", desc: "Built for future growth" },
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#8B5CF6] mb-4">
+                {item.icon}
               </div>
-            </motion.button>
-          </div>
-          
-          <div className="mt-12 flex items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-             <span className="text-[10px] text-white font-bold uppercase tracking-[0.4em]">Secure Payment</span>
-             <span className="text-[10px] text-white font-bold uppercase tracking-[0.4em]">Premium Quality</span>
-             <span className="text-[10px] text-white font-bold uppercase tracking-[0.4em]">2026 Ready</span>
-          </div>
+              <h4 className="text-white text-sm font-bold font-display mb-1">{item.title}</h4>
+              <p className="text-white/30 text-xs font-medium">{item.desc}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
 
-      {/* Modern Checkout Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/95 backdrop-blur-2xl" onClick={() => setIsModalOpen(false)} />
-          <motion.div 
-            initial={{ opacity: 0, y: 100, scale: 0.9 }} 
-            animate={{ opacity: 1, y: 0, scale: 1 }} 
-            exit={{ opacity: 0, y: 100, scale: 0.9 }}
-            className="bg-[#05050A] border border-white/10 rounded-[56px] p-12 lg:p-16 max-w-2xl w-full relative z-10 shadow-[0_0_120px_rgba(0,0,0,1)] overflow-hidden"
-          >
-            {/* Modal Glow Accent */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent" />
-
-            <button onClick={() => setIsModalOpen(false)} className="absolute top-10 right-10 text-white/30 hover:text-white transition-all bg-white/5 hover:bg-white/10 p-3 rounded-full border border-white/10">
-              <X size={20} />
-            </button>
-
-            <div className="mb-12">
-                <h3 className="text-5xl font-display font-bold text-white mb-4 tracking-tighter">Secure Checkout</h3>
-                <p className="text-white/40 text-lg leading-relaxed font-sans font-medium">
-                  Connecting with Divo for the <span className="text-white">{selectedPackage?.name}</span>. <br/>
-                  Estimated Investment: <span className="text-[#8B5CF6]">Rp {selectedPackage?.price.toLocaleString('id-ID')}</span>
-                </p>
-            </div>
+      {/* Checkout Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+            />
             
-            <form onSubmit={handleCheckout} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">First Name</label>
-                  <input required value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="John" />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Last Name</label>
-                  <input required value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="Doe" />
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between items-end pl-1 pr-2">
-                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em]">Email</label>
-                  <span className="text-white/40 text-[9px] italic">Must be active & reachable</span>
-                </div>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="j.doe@company.com" />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <div className="flex justify-between items-end pl-1 pr-2">
-                    <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em]">WhatsApp Number</label>
-                    <span className="text-white/40 text-[9px] italic">Include Country Code (+62)</span>
-                  </div>
-                  <input type="tel" required value={formData.phone} 
-                    onChange={(e) => {
-                      let val = e.target.value;
-                      if (val && !val.startsWith('+')) val = '+' + val.replace(/\D/g, ''); 
-                      setFormData({...formData, phone: val})
-                    }} 
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all placeholder:text-white/5" placeholder="+62812..." />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-white/30 text-[10px] uppercase font-bold tracking-[0.3em] pl-1">Payment Method</label>
-                  <select 
-                    value={formData.paymentMethod} 
-                    onChange={(e) => setFormData({...formData, paymentMethod: e.target.value})}
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-[24px] px-8 py-5 text-white text-base focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] outline-none transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="Q1" className="bg-[#05050A] text-white">QRIS (All E-Wallets/Banks)</option>
-                    <option value="VC" className="bg-[#05050A] text-white">Credit Card (Visa/Mastercard)</option>
-                    <option value="BC" className="bg-[#05050A] text-white">BCA Virtual Account</option>
-                    <option value="M2" className="bg-[#05050A] text-white">Mandiri Virtual Account</option>
-                    <option value="BR" className="bg-[#05050A] text-white">BRI Virtual Account</option>
-                    <option value="SP" className="bg-[#05050A] text-white">ShopeePay</option>
-                  </select>
-                </div>
-              </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl bg-[#0A0A0F] border border-white/10 rounded-[40px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,1)]"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                {/* Left Side: Summary */}
+                <div className="p-10 md:p-14 bg-white/5 border-r border-white/5">
+                   <div className="flex justify-between items-center mb-12">
+                     <div className="w-10 h-10 rounded-full bg-[#5B21B6] flex items-center justify-center text-white font-display font-bold text-xs">DK</div>
+                     <button onClick={() => setIsModalOpen(false)} className="text-white/40 hover:text-white transition-colors">
+                        <X size={24} />
+                     </button>
+                   </div>
 
-              <div className="pt-8">
-                <button disabled={isLoading} type="submit" className="w-full bg-[#4F46E5] text-white py-6 rounded-[24px] font-display font-black text-xl hover:bg-[#4338CA] transition-all disabled:opacity-50 flex justify-center items-center gap-4 active:scale-[0.98] shadow-[0_20px_60px_rgba(79,70,229,0.3)]">
-                    {isLoading ? 'Establishing Secure Tunnel...' : `Confirm Transaction`}
-                    {!isLoading && <ArrowUpRight size={24} />}
-                </button>
-                <p className="text-center mt-6 text-white/20 text-[10px] uppercase font-bold tracking-[0.2em]">Powered by Duitku Secure Sockets</p>
+                   <div className="mb-10">
+                      <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em] mb-4 block">Selected Investment</span>
+                      <h4 className="text-white text-3xl font-display font-bold mb-2">{selectedPackage?.name}</h4>
+                      <div className="text-white text-5xl font-display font-bold tracking-tighter mb-4">{selectedPackage?.priceLabel}</div>
+                      <p className="text-white/40 text-sm leading-relaxed">{selectedPackage?.description}</p>
+                   </div>
+
+                   <div className="space-y-4">
+                      {selectedPackage?.features.slice(0, 5).map((f, idx) => (
+                        <div key={idx} className="flex items-center gap-3 text-white/60 text-xs font-medium">
+                           <div className="w-4 h-4 rounded-full bg-white/5 border border-white/5 flex items-center justify-center">
+                              <Check size={8} className="text-[#8B5CF6]" />
+                           </div>
+                           {f}
+                        </div>
+                      ))}
+                   </div>
+                </div>
+
+                {/* Right Side: Form */}
+                <div className="p-10 md:p-14">
+                   <h4 className="text-white text-xl font-display font-bold mb-8">Checkout Details</h4>
+                   
+                   <form onSubmit={handleCheckout} className="space-y-6">
+                      <div className="grid grid-cols-2 gap-4">
+                         <div className="space-y-2">
+                            <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">First Name</label>
+                            <input 
+                              required
+                              type="text" 
+                              value={formData.firstName}
+                              onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                              placeholder="Divo"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
+                            />
+                         </div>
+                         <div className="space-y-2">
+                            <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Last Name</label>
+                            <input 
+                              required
+                              type="text" 
+                              value={formData.lastName}
+                              onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                              placeholder="Khairul"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
+                            />
+                         </div>
+                      </div>
+
+                      <div className="space-y-2">
+                         <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Email Address</label>
+                         <input 
+                            required
+                            type="email" 
+                            value={formData.email}
+                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                            placeholder="hello@example.com"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
+                         />
+                      </div>
+
+                      <div className="space-y-2">
+                         <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Phone Number</label>
+                         <input 
+                            required
+                            type="tel" 
+                            value={formData.phone}
+                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
+                         />
+                      </div>
+
+                      <div className="space-y-2">
+                         <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Payment Method</label>
+                         <div className="grid grid-cols-2 gap-3">
+                            <button 
+                              type="button"
+                              onClick={() => setFormData({...formData, paymentMethod: 'Q1'})}
+                              className={`flex items-center justify-center gap-2 border rounded-xl py-3.5 transition-all ${formData.paymentMethod === 'Q1' ? 'bg-[#8B5CF6]/10 border-[#8B5CF6] text-white' : 'bg-white/5 border-white/10 text-white/40'}`}
+                            >
+                               <CreditCard size={14} />
+                               <span className="text-[10px] font-bold uppercase">QRIS / Instant</span>
+                            </button>
+                            <button 
+                              type="button"
+                              onClick={() => setFormData({...formData, paymentMethod: 'B1'})}
+                              className={`flex items-center justify-center gap-2 border rounded-xl py-3.5 transition-all ${formData.paymentMethod === 'B1' ? 'bg-[#8B5CF6]/10 border-[#8B5CF6] text-white' : 'bg-white/5 border-white/10 text-white/40'}`}
+                            >
+                               <Send size={14} />
+                               <span className="text-[10px] font-bold uppercase">Bank Transfer</span>
+                            </button>
+                         </div>
+                      </div>
+
+                      <button 
+                         disabled={isLoading}
+                         className="w-full bg-white text-black py-5 rounded-2xl font-display font-bold text-base shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:bg-white/90 active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+                      >
+                         {isLoading ? (
+                           <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                         ) : (
+                           <>
+                             Initiate Transaction
+                             <ArrowUpRight size={18} />
+                           </>
+                         )}
+                      </button>
+
+                      <p className="text-center text-white/20 text-[9px] font-medium uppercase tracking-[0.2em]">
+                         secure checkout powered by midtrans
+                      </p>
+                   </form>
+                </div>
               </div>
-            </form>
-          </motion.div>
-        </div>
-      )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
-
 const ContactSection = () => {
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  const benefits = [
-    {
-      icon: <Zap className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Performance & Efficiency",
-      desc: "Prioritizing clean, efficient code and architectural optimization to ensure applications run at peak performance."
-    },
-    {
-      icon: <Shield className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Scalable Architecture",
-      desc: "Designing robust systems built for long-term growth, with secure database and cloud structures."
-    },
-    {
-      icon: <MousePointer2 className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "End-to-End Development",
-      desc: "Mastering the entire development life cycle, from interface design and interactive frontends to backend integration."
-    },
-    {
-      icon: <Brush className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "UI/UX & Premium Animations",
-      desc: "Focusing on visual details and modern user interactions, utilizing cutting-edge design principles."
-    },
-    {
-      icon: <Handshake className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />,
-      title: "Continuous Learning",
-      desc: "Dedicated to continuously exploring the latest technologies, ensuring the implementation of relevant tech stacks."
-    }
-  ];
-
   return (
-    <section id="contact" className="bg-[#0a0a0a] min-h-screen flex flex-col lg:flex-row overflow-hidden font-sans">
-      {/* Left Side - Stats & Testimonials */}
-      <div className="lg:w-1/2 relative p-6 sm:p-12 md:p-20 flex flex-col justify-between min-h-[500px] lg:min-h-screen">
-        {/* Background Abstract - Deep Purple Customization */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-[#0a0a0a] opacity-60" />
-          <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[160px] animate-pulse" />
-          <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-[#5B21B6]/20 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }} />
-        </div>
-
-        <div className="relative z-10 space-y-20">
-          {/* Main Stat */}
-          <div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-7xl md:text-9xl font-display font-bold text-white tracking-tighter mb-2 drop-shadow-[0_0_30px_rgba(168,85,247,0.4)]"
-            >
-              Divo
-            </motion.h2>
-            <p className="text-white/60 text-[10px] uppercase tracking-[0.4em] font-display font-bold">DIGITAL CREATOR & DEVELOPER</p>
+    <section id="contact" className="bg-black py-32 px-6 md:px-12 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
+       {/* Background Text Overlay */}
+       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.02] flex items-center justify-center">
+          <div className="text-[30vw] font-display font-black whitespace-nowrap -rotate-12 select-none">
+             CONTACT CONTACT CONTACT
           </div>
+       </div>
 
-          {/* Grid Stats */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-12 sm:gap-y-16">
-            {[
-              { label: 'Instagram', value: '@divo0u' },
-              { label: 'TikTok', value: '@div0u' },
-              { label: 'WhatsApp', value: '+62 812 8000 4392' },
-              { label: 'Email', value: 'divokhairulrahimtarjono@gmail.com' },
-            ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <h3 className="text-xl md:text-2xl font-display font-medium text-white mb-2 break-all">{stat.value}</h3>
-                <p className="text-white/40 text-[10px] uppercase tracking-[0.4em] font-display font-bold">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Why Work With Me Section */}
-          <div className="relative max-w-lg w-full flex flex-col gap-5 mt-4">
-            <h3 className="text-white/40 font-display font-bold text-[10px] uppercase tracking-[0.2em] pl-1">Core Values & Work Ethic</h3>
-            <div className="flex flex-col gap-3">
-              {benefits.map((benefit, i) => (
-                <motion.div 
-                  key={i}
+       <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+             <div>
+                <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 p-5 rounded-[24px] flex items-start gap-5 group hover:border-white/20 hover:bg-white/[0.08] shadow-[0_10px_40px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(255,255,255,0.05)] transition-all cursor-default"
+                  className="text-[10px] uppercase tracking-[0.4em] text-[#4ade80] mb-6 font-display font-bold block"
                 >
-                  <div className="mt-0.5 bg-white/5 p-2.5 rounded-full border border-white/5 group-hover:bg-[#8B5CF6]/10 group-hover:border-[#8B5CF6]/30 transition-all">
-                    {benefit.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-white font-display font-medium text-sm tracking-tight mb-1.5 group-hover:text-white transition-colors">{benefit.title}</h4>
-                    <p className="text-white/50 text-xs leading-relaxed font-sans font-medium">{benefit.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Contact Info */}
-        <div className="relative z-10 mt-12 md:mt-20 flex flex-col md:flex-row md:items-center justify-between gap-8 flex-wrap">
-          <p className="text-white/40 text-[10px] sm:text-xs font-display font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-white transition-colors cursor-pointer break-all text-left">
-            divokhairulrahimtarjono@gmail.com
-          </p>
-          <div className="flex gap-3">
-            {[Instagram, Bot, Mail, MessageCircle].map((Icon, i) => (
-              <button key={i} className="w-12 h-12 rounded-2xl bg-[#111111] border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all group shadow-xl">
-                <Icon size={20} className="group-hover:scale-110 transition-transform duration-300" />
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Right Side - Form */}
-      <div className="lg:w-1/2 bg-[#0a0a0a] p-6 sm:p-12 md:p-20 flex flex-col justify-center">
-        <div className="max-w-xl w-full">
-          <motion.h2 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight"
-          >
-            Contact Me
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-white/50 text-lg mb-12 leading-relaxed font-sans font-medium"
-          >
-            Have questions or need assistance? Reach out to me, and I will get back to you promptly.
-          </motion.p>
-
-          <form action="https://formspree.io/f/xgoponry" method="POST" className="space-y-8" suppressHydrationWarning>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}
-                className="space-y-3"
-                suppressHydrationWarning
-              >
-                <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">First name</label>
-                <motion.input 
-                  whileFocus={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "#8B5CF6" }}
-                  type="text" 
-                  name="firstName"
-                  placeholder="John" 
-                  className="w-full bg-[#111111] border border-[#2A2A2A] rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#8B5CF6] transition-colors font-sans font-medium"
-                  required
-                  suppressHydrationWarning
-                />
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
-                className="space-y-3"
-                suppressHydrationWarning
-              >
-                <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Last name</label>
-                <motion.input 
-                  whileFocus={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "#8B5CF6" }}
-                  type="text" 
-                  name="lastName"
-                  placeholder="Doe" 
-                  className="w-full bg-[#111111] border border-[#2A2A2A] rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#8B5CF6] transition-colors font-sans font-medium"
-                  required
-                  suppressHydrationWarning
-                />
-              </motion.div>
-            </div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
-              className="space-y-3"
-              suppressHydrationWarning
-            >
-              <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Email</label>
-              <motion.input 
-                whileFocus={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "#8B5CF6" }}
-                type="email" 
-                name="email"
-                placeholder="john@example.com" 
-                className="w-full bg-[#111111] border border-[#2A2A2A] rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#8B5CF6] transition-colors font-sans font-medium"
-                required
-                suppressHydrationWarning
-              />
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
-              className="space-y-3"
-              suppressHydrationWarning
-            >
-              <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Phone number</label>
-              <div className="flex gap-4">
-                <motion.div 
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                  className="w-24 bg-[#111111] border border-[#2A2A2A] rounded-2xl px-4 py-4 text-white flex items-center justify-between cursor-pointer hover:bg-[#1a1a1a] transition-colors"
+                  GET IN TOUCH
+                </motion.span>
+                <motion.h2 
+                   initial={{ opacity: 0, y: 30 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   className="text-6xl md:text-9xl font-display font-bold text-white mb-10 tracking-tighter leading-[0.9]"
                 >
-                  <span className="text-xs font-display font-bold text-white/80">ID</span>
-                  <ChevronRight size={14} className="rotate-90 text-white/40" />
-                </motion.div>
-                <motion.input 
-                  whileFocus={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "#8B5CF6" }}
-                  type="tel" 
-                  name="phone"
-                  placeholder="+62 812 8000 4392" 
-                  className="flex-grow min-w-0 bg-[#111111] border border-[#2A2A2A] rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#8B5CF6] transition-colors font-sans font-medium"
-                  suppressHydrationWarning
-                />
-              </div>
-            </motion.div>
+                   Let&apos;s build <br />something <span className="text-white/20">great.</span>
+                </motion.h2>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}
-              className="space-y-3"
-              suppressHydrationWarning
-            >
-              <label className="text-white/60 text-[10px] font-display font-bold uppercase tracking-[0.2em]">Message</label>
-              <motion.textarea 
-                whileFocus={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "#8B5CF6" }}
-                rows={4}
-                name="message"
-                placeholder="Leave me a message..." 
-                className="w-full bg-[#111111] border border-[#2A2A2A] rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#8B5CF6] transition-colors resize-none font-sans font-medium"
-                required
-                suppressHydrationWarning
-              />
-            </motion.div>
+                <div className="space-y-8 mt-20">
+                   {[
+                      { icon: <Mail size={24} />, label: "Email", value: "hello@divokhairul.com" },
+                      { icon: <MessageCircle size={24} />, label: "WhatsApp", value: "+62 812 3456 7890" },
+                      { icon: <Map size={24} />, label: "Location", value: "Jakarta, Indonesia" }
+                   ].map((item, i) => (
+                      <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-center gap-6 group cursor-pointer"
+                      >
+                         <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-[#5B21B6] group-hover:bg-[#5B21B6] group-hover:text-white transition-all">
+                            {item.icon}
+                         </div>
+                         <div>
+                            <span className="block text-white/40 text-xs font-bold uppercase tracking-widest mb-1">{item.label}</span>
+                            <span className="block text-white text-xl font-medium tracking-tight group-hover:text-[#4ade80] transition-colors">{item.value}</span>
+                         </div>
+                      </motion.div>
+                   ))}
+                </div>
+             </div>
 
-
-
-            <motion.button 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(255,255,255,0.1)" }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="w-full bg-white text-black py-5 rounded-full font-display font-black text-sm flex items-center justify-center gap-3 transition-colors shadow-2xl group"
-            >
-              Send Message
-              <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </motion.button>
-          </form>
-        </div>
-      </div>
+             <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 p-10 md:p-16 rounded-[60px] shadow-2xl"
+             >
+                <form className="space-y-8">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                         <label className="text-white/40 text-xs font-bold uppercase tracking-widest ml-2">Full Name</label>
+                         <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#5B21B6] transition-all" />
+                      </div>
+                      <div className="space-y-3">
+                         <label className="text-white/40 text-xs font-bold uppercase tracking-widest ml-2">Email Address</label>
+                         <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#5B21B6] transition-all" />
+                      </div>
+                   </div>
+                   <div className="space-y-3">
+                      <label className="text-white/40 text-xs font-bold uppercase tracking-widest ml-2">Project Subject</label>
+                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#5B21B6] transition-all" />
+                   </div>
+                   <div className="space-y-3">
+                      <label className="text-white/40 text-xs font-bold uppercase tracking-widest ml-2">Message</label>
+                      <textarea rows={5} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#5B21B6] transition-all resize-none"></textarea>
+                   </div>
+                   <button className="w-full bg-[#5B21B6] text-white py-6 rounded-2xl font-display font-bold text-lg hover:bg-[#4C1D95] transition-all shadow-[0_20px_50px_rgba(91,33,182,0.4)] flex items-center justify-center gap-4 group">
+                      Send Message
+                      <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                   </button>
+                </form>
+             </motion.div>
+          </div>
+       </div>
     </section>
   );
 };
 
 const Footer = () => {
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Work', href: '#work' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const socialLinks = [
-    { icon: <Twitter size={18} />, href: '#' },
-    { icon: <Instagram size={18} />, href: '#' },
-    { icon: <Youtube size={18} />, href: '#' },
-    { icon: <MessageCircle size={18} />, href: '#' },
-  ];
-
   return (
-    <footer className="relative bg-[#05050A] pt-32 pb-12 px-6 md:px-12 overflow-hidden border-t border-[#1A1A24]">
-      {/* Deep Space Background Gradient */}
-      <div className="absolute inset-0 bg-[#05050A] pointer-events-none" />
-      
-      {/* Subtle Purple/Blue Glow from bottom */}
-      <div className="absolute bottom-[-150px] left-1/2 -translate-x-1/2 w-[100%] md:w-[70%] h-[300px] bg-[radial-gradient(ellipse_at_center,_rgba(99,102,241,0.12),_transparent_70%)] pointer-events-none blur-[50px]" />
-      
-      {/* Horizon Line with Glow */}
-      <div className="absolute top-0 left-0 w-full flex justify-center">
-         <div className="w-full max-w-5xl h-[1px] bg-gradient-to-r from-transparent via-[#4F46E5]/40 to-transparent shadow-[0_0_20px_rgba(79,70,229,0.5)]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col">
-        {/* Main Footer Content */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-32">
-          
-          {/* Left: Brand & Tagline */}
-          <div className="flex flex-col max-w-md">
-            <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-6">Divo Khairul.</h3>
-            <p className="text-[#8E8E99] text-sm leading-relaxed font-sans font-medium mb-10">
-              Crafting digital experiences that blend futuristic technology with human-centric design. Building the next generation of web interfaces.
-            </p>
-            <div className="inline-flex items-center gap-3 group cursor-pointer w-fit">
-              <span className="text-[#6366F1] font-display font-bold text-sm uppercase tracking-widest group-hover:text-[#818CF8] transition-colors">
-                Let&apos;s build something meaningful
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-[#6366F1] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </div>
-          </div>
-
-          <div className="flex gap-16 md:gap-24">
-            {/* Center: Navigation */}
-            <div className="flex flex-col">
-              <h4 className="text-[10px] uppercase tracking-[0.3em] text-[#3F3F5A] font-display font-bold mb-8">Navigation</h4>
-              <div className="flex flex-col gap-5">
-                {navItems.map((item) => (
-                  <a 
-                    key={item.name} 
-                    href={item.href}
-                    className="text-[#8E8E99] hover:text-white text-sm font-sans font-medium transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Connect / Social */}
-            <div className="flex flex-col">
-              <h4 className="text-[10px] uppercase tracking-[0.3em] text-[#3F3F5A] font-display font-bold mb-8">Connect</h4>
-              <div className="flex items-center gap-4">
-                {socialLinks.map((social, i) => (
-                  <a 
-                    key={i} 
-                    href={social.href}
-                    className="w-11 h-11 rounded-lg bg-[#0A0A0F] border border-[#1A1A24] flex items-center justify-center text-[#8E8E99] hover:text-white hover:border-[#4F46E5]/40 hover:bg-[#1A1A24] transition-all duration-300 group shadow-[inset_0_1px_3px_rgba(255,255,255,0.02)]"
-                  >
-                     <span className="group-hover:scale-110 transition-transform duration-300">
-                       {social.icon}
-                     </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Bottom Metadata */}
-        <div className="pt-8 border-t border-[#1A1A24] flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-6">
-            <p className="text-[#3F3F5A] text-[10px] font-display font-bold uppercase tracking-widest">
-              © 2026 DIVO KHAIRUL. ALL RIGHTS RESERVED.
-            </p>
-            <div className="hidden md:flex items-center gap-2">
-              <div className="relative flex items-center justify-center w-2 h-2">
-                <span className="absolute w-2 h-2 rounded-full bg-[#10B981] opacity-40 animate-ping" />
-                <span className="relative w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-              </div>
-              <span className="text-[9px] text-[#3F3F5A] uppercase tracking-widest font-display font-bold">System: Online</span>
-            </div>
+    <footer className="bg-black py-20 px-6 border-t border-white/5">
+       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+          <div className="flex flex-col items-center md:items-start">
+             <div className="w-12 h-12 rounded-full bg-[#5B21B6] flex items-center justify-center text-white font-display font-bold text-lg mb-6">DK</div>
+             <p className="text-white/40 text-sm font-medium text-center md:text-left max-w-xs leading-relaxed">
+                Building the future of digital experiences with code and creativity. All rights reserved.
+             </p>
           </div>
           
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-3 text-[#525266] hover:text-[#8E8E99] transition-all"
-          >
-            <span className="text-[10px] uppercase tracking-[0.3em] font-display font-bold">Back to top</span>
-            <div className="w-8 h-8 rounded-lg border border-[#1A1A24] bg-[#0A0A0F] flex items-center justify-center group-hover:border-[#4F46E5]/40 group-hover:bg-[#1A1A24] transition-all duration-300">
-              <ChevronRight size={14} className="-rotate-90 group-hover:-translate-y-0.5 transition-transform" />
-            </div>
-          </button>
-        </div>
-      </div>
+          <div className="flex gap-12">
+             <div className="flex flex-col gap-4">
+                <span className="text-white text-xs font-bold uppercase tracking-widest mb-2 opacity-30">Sitemap</span>
+                {['Home', 'About', 'Work', 'Pricing'].map(link => (
+                  <a key={link} href={`#${link.toLowerCase()}`} className="text-white/60 hover:text-white text-sm font-medium transition-colors">{link}</a>
+                ))}
+             </div>
+             <div className="flex flex-col gap-4">
+                <span className="text-white text-xs font-bold uppercase tracking-widest mb-2 opacity-30">Social</span>
+                {['Twitter', 'Instagram', 'Github', 'Linkedin'].map(link => (
+                  <a key={link} href="#" className="text-white/60 hover:text-white text-sm font-medium transition-colors">{link}</a>
+                ))}
+             </div>
+          </div>
+
+          <div className="flex flex-col items-center md:items-end">
+             <div className="text-white/20 text-[10px] font-bold uppercase tracking-[0.5em] mb-4">ESTABLISHED 2024</div>
+             <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-[#4ade80]" />
+                <span className="text-white/60 text-xs font-bold tracking-widest uppercase">Version 2.0.4 - Release Candidate</span>
+             </div>
+          </div>
+       </div>
+       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 text-center">
+          <p className="text-white/10 text-[10px] font-bold uppercase tracking-[0.3em]">
+             &copy; 2026 DIVO KHAIRUL • HANDCRAFTED WITH PRECISION
+          </p>
+       </div>
     </footer>
   );
 };
 
-export default function Page() {
+export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="bg-black">
       <Navbar />
       <Hero />
       <AboutSection />
