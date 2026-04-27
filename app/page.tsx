@@ -1011,12 +1011,6 @@ const PricingSection = () => {
                   </button>
                 </div>
 
-                {/* Holographic Border Effect */}
-                {isSelected && (
-                  <div className="absolute inset-0 rounded-[48px] pointer-events-none overflow-hidden">
-                    <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_70%,#8B5CF6_85%,transparent_100%)] animate-[spin_4s_linear_infinite] opacity-30" />
-                  </div>
-                )}
               </motion.div>
             );
           })}
