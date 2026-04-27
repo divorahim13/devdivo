@@ -873,9 +873,7 @@ const PricingSection = () => {
         {/* Core bottom glow */}
         <div className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[140%] h-[70%] bg-gradient-to-t from-[#4F46E5]/30 via-[#8B5CF6]/5 to-transparent blur-[140px] rounded-[100%]" />
         
-        {/* Sonar / Pulsing Radial Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-[radial-gradient(circle,rgba(139,92,246,0.15)_0%,transparent_70%)] rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_70%)] rounded-full blur-[60px] animate-pulse" style={{ animationDuration: '4s', animationDelay: '2s' }} />
+
 
         {/* Dynamic Sparkles (Animated SVG) */}
         <div className="absolute inset-0 opacity-30 mix-blend-screen">
