@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import { trackClickButton, trackViewContent, trackLead, trackAddToWishlist, trackCompleteRegistration } from '@/lib/tiktok-pixel';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import gsap from 'gsap';
@@ -219,6 +220,10 @@ const Hero = () => {
         <motion.button 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            trackClickButton("Let's Talk - Hero CTA", 'hero-cta');
+            document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+          }}
           className="inline-flex items-center gap-3 bg-[#5B21B6] text-white px-8 py-4 rounded-full font-bold tracking-tight hover:bg-[#4C1D95] transition-colors group shadow-[0_0_30px_rgba(91,33,182,0.5)] hover:shadow-[0_0_40px_rgba(91,33,182,0.8)]"
         >
           Let&apos;s Talk
@@ -844,6 +849,7 @@ const PricingSection = () => {
 
       const data = await response.json();
       if (data.paymentUrl) {
+        trackCompleteRegistration(selectedPackage?.name ?? 'Unknown Package', selectedPackage?.price ?? 0);
         window.location.href = data.paymentUrl;
       } else {
         alert(data.error || 'Checkout failed');
@@ -931,7 +937,11 @@ const PricingSection = () => {
             return (
               <motion.div
                 key={pkg.id}
-                onClick={() => setSelectedPackageId(pkg.id)}
+                onClick={() => {
+                  setSelectedPackageId(pkg.id);
+                  trackAddToWishlist(pkg.name, pkg.price);
+                  trackViewContent(pkg.name, `package-${pkg.id}`, pkg.price);
+                }}
                 whileHover={{ y: -15, transition: { duration: 0.4 } }}
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -997,6 +1007,7 @@ const PricingSection = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       setIsModalOpen(true);
+                      trackLead(pkg.name, pkg.price);
                     }}
                     className={`
                       w-full py-5 rounded-2xl font-display font-bold text-base transition-all duration-500 flex items-center justify-center gap-3 group/btn
