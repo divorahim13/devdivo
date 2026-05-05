@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { trackClickButton, trackViewContent, trackLead, trackAddToWishlist, trackCompleteRegistration } from '@/lib/tiktok-pixel';
+import { trackClickButton, trackViewContent, trackLead, trackAddToWishlist } from '@/lib/tiktok-pixel';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import gsap from 'gsap';
@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
 import { 
   Twitter, Instagram, Youtube, ArrowUpRight, Power, Cast, Eye, Bot, ChevronLeft, ChevronRight,
   Cloud, Database, Server, Smartphone, Monitor, Box, Layers, Network, Cpu, HardDrive, Share2, Shield, Code, Terminal, Atom, Map,
-  Mail, MessageCircle, Music2, Phone, Send, Zap, Tag, MousePointer2, Brush, Handshake, Check, X, CreditCard, Star
+  Mail, MessageCircle, Music2, Phone, Send, Zap, Tag, MousePointer2, Brush, Handshake, Check, Star
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -757,11 +757,10 @@ const SkillsSection = () => {
   );
 };
 
+const WHATSAPP_NUMBER = '6281280004392';
+
 const PricingSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState('2');
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '+62 ', paymentMethod: 'Q1' });
 
   const ref = useRef(null);
 
@@ -832,34 +831,11 @@ const PricingSection = () => {
 
   const selectedPackage = packages.find(p => p.id === selectedPackageId);
 
-  const handleCheckout = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          packageId: selectedPackage?.id,
-          price: selectedPackage?.price,
-          ...formData
-        })
-      });
-
-      const data = await response.json();
-      if (data.paymentUrl) {
-        trackCompleteRegistration(selectedPackage?.name ?? 'Unknown Package', selectedPackage?.price ?? 0);
-        window.location.href = data.paymentUrl;
-      } else {
-        alert(data.error || 'Checkout failed');
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error(error);
-      alert('An error occurred during checkout');
-      setIsLoading(false);
-    }
+  const buildWALink = (pkg: typeof packages[0]) => {
+    const msg = encodeURIComponent(
+      `Halo Divo! Saya tertarik dengan paket *${pkg.name}* (${pkg.priceLabel}).\n\nBisa minta info lebih lanjut?`
+    );
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
   };
 
   return (
@@ -1003,20 +979,23 @@ const PricingSection = () => {
                 </div>
 
                 <div className="relative z-10 mt-auto">
-                  <button 
+                  <a
+                    href={buildWALink(pkg)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setIsModalOpen(true);
                       trackLead(pkg.name, pkg.price);
                     }}
                     className={`
                       w-full py-5 rounded-2xl font-display font-bold text-base transition-all duration-500 flex items-center justify-center gap-3 group/btn
-                      ${isSelected ? 'bg-white text-black shadow-[0_20px_50px_rgba(255,255,255,0.2)]' : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'}
+                      ${isSelected ? 'bg-[#25D366] text-white shadow-[0_20px_50px_rgba(37,211,102,0.3)] hover:bg-[#20BD5C]' : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'}
                     `}
                   >
-                    Invest in this Plan
-                    <ArrowUpRight size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </button>
+                    <MessageCircle size={18} className="group-hover/btn:scale-110 transition-transform" />
+                    Chat via WhatsApp
+                    <ArrowUpRight size={16} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  </a>
                 </div>
 
               </motion.div>
@@ -1048,152 +1027,6 @@ const PricingSection = () => {
         </motion.div>
       </div>
 
-      {/* Checkout Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-xl"
-            />
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-4xl bg-[#0A0A0F] border border-white/10 rounded-[40px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,1)]"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                {/* Left Side: Summary */}
-                <div className="p-10 md:p-14 bg-white/5 border-r border-white/5">
-                   <div className="flex justify-between items-center mb-12">
-                     <div className="w-10 h-10 rounded-full bg-[#5B21B6] flex items-center justify-center text-white font-display font-bold text-xs">DK</div>
-                     <button onClick={() => setIsModalOpen(false)} className="text-white/40 hover:text-white transition-colors">
-                        <X size={24} />
-                     </button>
-                   </div>
-
-                   <div className="mb-10">
-                      <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em] mb-4 block">Selected Investment</span>
-                      <h4 className="text-white text-3xl font-display font-bold mb-2">{selectedPackage?.name}</h4>
-                      <div className="text-white text-5xl font-display font-bold tracking-tighter mb-4">{selectedPackage?.priceLabel}</div>
-                      <p className="text-white/40 text-sm leading-relaxed">{selectedPackage?.description}</p>
-                   </div>
-
-                   <div className="space-y-4">
-                      {selectedPackage?.features.slice(0, 5).map((f, idx) => (
-                        <div key={idx} className="flex items-center gap-3 text-white/60 text-xs font-medium">
-                           <div className="w-4 h-4 rounded-full bg-white/5 border border-white/5 flex items-center justify-center">
-                              <Check size={8} className="text-[#8B5CF6]" />
-                           </div>
-                           {f}
-                        </div>
-                      ))}
-                   </div>
-                </div>
-
-                {/* Right Side: Form */}
-                <div className="p-10 md:p-14">
-                   <h4 className="text-white text-xl font-display font-bold mb-8">Checkout Details</h4>
-                   
-                   <form onSubmit={handleCheckout} className="space-y-6">
-                      <div className="grid grid-cols-2 gap-4">
-                         <div className="space-y-2">
-                            <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">First Name</label>
-                            <input 
-                              required
-                              type="text" 
-                              value={formData.firstName}
-                              onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                              placeholder="Divo"
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
-                            />
-                         </div>
-                         <div className="space-y-2">
-                            <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Last Name</label>
-                            <input 
-                              required
-                              type="text" 
-                              value={formData.lastName}
-                              onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                              placeholder="Khairul"
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
-                            />
-                         </div>
-                      </div>
-
-                      <div className="space-y-2">
-                         <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Email Address</label>
-                         <input 
-                            required
-                            type="email" 
-                            value={formData.email}
-                            onChange={(e) => setFormData({...formData, email: e.target.value})}
-                            placeholder="hello@example.com"
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
-                         />
-                      </div>
-
-                      <div className="space-y-2">
-                         <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Phone Number</label>
-                         <input 
-                            required
-                            type="tel" 
-                            value={formData.phone}
-                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#8B5CF6]/50 transition-colors"
-                         />
-                      </div>
-
-                      <div className="space-y-2">
-                         <label className="text-white/40 text-[10px] uppercase font-bold tracking-widest ml-1">Payment Method</label>
-                         <div className="grid grid-cols-2 gap-3">
-                            <button 
-                              type="button"
-                              onClick={() => setFormData({...formData, paymentMethod: 'Q1'})}
-                              className={`flex items-center justify-center gap-2 border rounded-xl py-3.5 transition-all ${formData.paymentMethod === 'Q1' ? 'bg-[#8B5CF6]/10 border-[#8B5CF6] text-white' : 'bg-white/5 border-white/10 text-white/40'}`}
-                            >
-                               <CreditCard size={14} />
-                               <span className="text-[10px] font-bold uppercase">QRIS / Instant</span>
-                            </button>
-                            <button 
-                              type="button"
-                              onClick={() => setFormData({...formData, paymentMethod: 'B1'})}
-                              className={`flex items-center justify-center gap-2 border rounded-xl py-3.5 transition-all ${formData.paymentMethod === 'B1' ? 'bg-[#8B5CF6]/10 border-[#8B5CF6] text-white' : 'bg-white/5 border-white/10 text-white/40'}`}
-                            >
-                               <Send size={14} />
-                               <span className="text-[10px] font-bold uppercase">Bank Transfer</span>
-                            </button>
-                         </div>
-                      </div>
-
-                      <button 
-                         disabled={isLoading}
-                         className="w-full bg-white text-black py-5 rounded-2xl font-display font-bold text-base shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:bg-white/90 active:scale-[0.98] transition-all flex items-center justify-center gap-3"
-                      >
-                         {isLoading ? (
-                           <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
-                         ) : (
-                           <>
-                             Initiate Transaction
-                             <ArrowUpRight size={18} />
-                           </>
-                         )}
-                      </button>
-
-                      <p className="text-center text-white/20 text-[9px] font-medium uppercase tracking-[0.2em]">
-                         secure checkout powered by midtrans
-                      </p>
-                   </form>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
