@@ -437,11 +437,8 @@ const ProjectsSection = () => {
   }, { scope: containerRef });
   
   const projects = [
-    { id: 1, title: 'RentSwift', subtitle: 'Car Rental', img: 'https://image.thum.io/get/width/600/crop/800/https://carrentaldivo.vercel.app/', href: 'https://carrentaldivo.vercel.app/' },
-    { id: 2, title: 'RoxPass', subtitle: 'Top Up Platform', img: 'https://image.thum.io/get/width/600/crop/800/https://roxpassdivo.vercel.app/', href: 'https://roxpassdivo.vercel.app/' },
-    { id: 3, title: 'DataVue', subtitle: 'Analytics Dashboard', img: 'https://image.thum.io/get/width/600/crop/800/https://datavuedivo-chi.vercel.app/', href: 'https://datavuedivo-chi.vercel.app/' },
-    { id: 4, title: 'Crewcuts', subtitle: 'Barbershop', img: 'https://image.thum.io/get/width/600/crop/800/https://crewcutsbarbershopbydivo.vercel.app/', href: 'https://crewcutsbarbershopbydivo.vercel.app/' },
-    { id: 5, title: 'Nexus', subtitle: 'SAAS Landing', img: 'https://image.thum.io/get/width/600/crop/800/https://nexus-seven-rose.vercel.app/', href: 'https://nexus-seven-rose.vercel.app/' },
+    { id: 1, title: 'Sat Teknik', subtitle: 'AC Services', img: 'https://image.thum.io/get/width/600/crop/800/https://satteknik.com/', href: 'https://satteknik.com/' },
+    { id: 2, title: 'Fatir Teknik', subtitle: 'AC Services', img: 'https://image.thum.io/get/width/600/crop/800/https://fatirteknik.com/', href: 'https://fatirteknik.com/' },
   ];
 
   return (
@@ -1220,8 +1217,8 @@ const ContactSection = () => {
 
                 <div className="space-y-8 mt-20">
                    {[
-                      { icon: <Mail size={24} />, label: "Email", value: "hello@divokhairul.com" },
-                      { icon: <MessageCircle size={24} />, label: "WhatsApp", value: "+62 812 3456 7890" },
+                      { icon: <Mail size={24} />, label: "Email", value: "divorahim13@gmail.com" },
+                      { icon: <MessageCircle size={24} />, label: "WhatsApp", value: "0812 8043 92" },
                       { icon: <Map size={24} />, label: "Location", value: "Jakarta, Indonesia" }
                    ].map((item, i) => (
                       <motion.div 
