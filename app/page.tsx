@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { trackClickButton, trackViewContent, trackLead, trackAddToWishlist } from '@/lib/tiktok-pixel';
+import { trackClickButton, trackViewContent, trackLead, trackAddToWishlist, trackInitiateCheckout, trackAddToCart } from '@/lib/tiktok-pixel';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import gsap from 'gsap';
@@ -916,6 +916,7 @@ const PricingSection = () => {
                 onClick={() => {
                   setSelectedPackageId(pkg.id);
                   trackAddToWishlist(pkg.name, pkg.price);
+                  trackAddToCart(pkg.name, pkg.price);
                   trackViewContent(pkg.name, `package-${pkg.id}`, pkg.price);
                 }}
                 whileHover={{ y: -15, transition: { duration: 0.4 } }}
@@ -986,6 +987,7 @@ const PricingSection = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       trackLead(pkg.name, pkg.price);
+                      trackInitiateCheckout(pkg.name, pkg.price);
                     }}
                     className={`
                       w-full py-5 rounded-2xl font-display font-bold text-base transition-all duration-500 flex items-center justify-center gap-3 group/btn

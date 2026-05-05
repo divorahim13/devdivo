@@ -86,6 +86,38 @@ export const trackLead = (packageName: string, price: number) => {
   });
 };
 
+// ─── InitiateCheckout ─────────────────────────────────────────────────────────
+// Dipanggil ketika user klik "Chat via WhatsApp" dari pricing card
+export const trackInitiateCheckout = (packageName: string, price: number) => {
+  ttq()?.track('InitiateCheckout', {
+    contents: [
+      {
+        content_id: `package-checkout`,
+        content_type: 'product',
+        content_name: packageName,
+      },
+    ],
+    value: price,
+    currency: CURRENCY,
+  });
+};
+
+// ─── AddToCart ────────────────────────────────────────────────────────────────
+// Dipanggil ketika user memilih pricing card (setara "add to cart")
+export const trackAddToCart = (packageName: string, price: number) => {
+  ttq()?.track('AddToCart', {
+    contents: [
+      {
+        content_id: `package-select`,
+        content_type: 'product',
+        content_name: packageName,
+      },
+    ],
+    value: price,
+    currency: CURRENCY,
+  });
+};
+
 // ─── CompleteRegistration ─────────────────────────────────────────────────────
 // Dipanggil ketika user submit order/checkout berhasil redirect ke payment
 export const trackCompleteRegistration = (packageName: string, price: number) => {
