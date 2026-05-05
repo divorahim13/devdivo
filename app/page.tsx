@@ -1218,7 +1218,7 @@ const ContactSection = () => {
                 <div className="space-y-8 mt-20">
                    {[
                       { icon: <Mail size={24} />, label: "Email", value: "divorahim13@gmail.com" },
-                      { icon: <MessageCircle size={24} />, label: "WhatsApp", value: "0812 8043 92" },
+                      { icon: <MessageCircle size={24} />, label: "WhatsApp", value: "0812-8000-4392" },
                       { icon: <Map size={24} />, label: "Location", value: "Jakarta, Indonesia" }
                    ].map((item, i) => (
                       <motion.div 
@@ -1276,6 +1276,36 @@ const ContactSection = () => {
   );
 };
 
+const WhatsAppFloat = () => (
+  <a
+    href="https://wa.me/6281280004392"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+    className="fixed bottom-8 right-8 z-[9999] group"
+  >
+    <motion.div
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ delay: 2, type: 'spring', stiffness: 300, damping: 20 }}
+      whileHover={{ scale: 1.15 }}
+      whileTap={{ scale: 0.95 }}
+      className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-[0_8px_40px_rgba(37,211,102,0.5)] bg-[#25D366]"
+    >
+      {/* Pulse ring */}
+      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
+      {/* WA Icon SVG */}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-8 h-8 fill-white">
+        <path d="M16.003 2C8.28 2 2 8.28 2 16.003c0 2.48.65 4.81 1.79 6.83L2 30l7.38-1.77A13.94 13.94 0 0016.003 30C23.72 30 30 23.72 30 16.003 30 8.28 23.72 2 16.003 2zm7.6 19.59c-.32.9-1.88 1.72-2.6 1.83-.68.1-1.54.14-2.48-.16-.57-.18-1.3-.42-2.23-.82-3.92-1.69-6.47-5.64-6.67-5.9-.2-.26-1.62-2.15-1.62-4.11 0-1.96 1.03-2.92 1.39-3.32.36-.4.79-.5 1.05-.5.26 0 .52.01.75.01.24.01.57-.09.9.69.34.79 1.14 2.75 1.24 2.95.1.2.17.43.03.69-.14.26-.21.42-.41.65-.2.23-.42.51-.6.68-.2.19-.41.4-.18.79.23.39 1.04 1.71 2.23 2.77 1.53 1.37 2.83 1.79 3.22 1.99.39.2.62.17.85-.1.23-.27.98-1.14 1.24-1.53.26-.39.52-.33.88-.2.36.13 2.3 1.08 2.69 1.28.39.2.65.29.75.45.1.16.1.93-.22 1.83z"/>
+      </svg>
+    </motion.div>
+    {/* Tooltip */}
+    <span className="absolute right-[110%] top-1/2 -translate-y-1/2 whitespace-nowrap bg-black/80 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+      Chat WhatsApp
+    </span>
+  </a>
+);
+
 const Footer = () => {
   return (
     <footer className="bg-black py-20 px-6 border-t border-white/5">
@@ -1330,6 +1360,7 @@ export default function Home() {
       <PricingSection />
       <ContactSection />
       <Footer />
+      <WhatsAppFloat />
     </main>
   );
 }
