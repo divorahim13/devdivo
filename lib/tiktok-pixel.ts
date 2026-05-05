@@ -11,12 +11,18 @@ declare global {
   }
 }
 
-// Safe caller - tidak error kalau ttq belum load
-const ttq = () => {
-  if (typeof window !== 'undefined' && window.ttq) {
-    return window.ttq;
+// Helper - fire event langsung ke window.ttq (queue-based, selalu available)
+const fireEvent = (eventName: string, params: object) => {
+  try {
+    if (typeof window === 'undefined') return;
+    // window.ttq selalu ada karena pixel script mendefinisikannya sebagai array queue
+    window.ttq?.track(eventName, params);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[TikTok Pixel]', eventName, params);
+    }
+  } catch (err) {
+    console.warn('[TikTok Pixel] Error firing event:', eventName, err);
   }
-  return null;
 };
 
 // ─── Currency & Content Defaults (Portfolio context) ─────────────────────────
@@ -25,7 +31,7 @@ const CURRENCY = 'IDR';
 // ─── ViewContent ─────────────────────────────────────────────────────────────
 // Dipanggil ketika user melihat section/halaman penting
 export const trackViewContent = (contentName: string, contentId: string, value = 0) => {
-  ttq()?.track('ViewContent', {
+  fireEvent('ViewContent', {
     contents: [
       {
         content_id: contentId,
@@ -41,7 +47,7 @@ export const trackViewContent = (contentName: string, contentId: string, value =
 // ─── ClickButton ─────────────────────────────────────────────────────────────
 // Dipanggil ketika user klik CTA button
 export const trackClickButton = (contentName: string, contentId: string, value = 0) => {
-  ttq()?.track('ClickButton', {
+  fireEvent('ClickButton', {
     contents: [
       {
         content_id: contentId,
@@ -57,7 +63,7 @@ export const trackClickButton = (contentName: string, contentId: string, value =
 // ─── Contact ─────────────────────────────────────────────────────────────────
 // Dipanggil ketika user submit form kontak atau klik WhatsApp
 export const trackContact = (contentName = 'Contact Form', value = 0) => {
-  ttq()?.track('Contact', {
+  fireEvent('Contact', {
     contents: [
       {
         content_id: 'contact',
@@ -73,7 +79,7 @@ export const trackContact = (contentName = 'Contact Form', value = 0) => {
 // ─── Lead ────────────────────────────────────────────────────────────────────
 // Dipanggil ketika user mulai checkout / isi form order
 export const trackLead = (packageName: string, price: number) => {
-  ttq()?.track('Lead', {
+  fireEvent('Lead', {
     contents: [
       {
         content_id: 'pricing',
@@ -89,7 +95,7 @@ export const trackLead = (packageName: string, price: number) => {
 // ─── InitiateCheckout ─────────────────────────────────────────────────────────
 // Dipanggil ketika user klik "Chat via WhatsApp" dari pricing card
 export const trackInitiateCheckout = (packageName: string, price: number) => {
-  ttq()?.track('InitiateCheckout', {
+  fireEvent('InitiateCheckout', {
     contents: [
       {
         content_id: `package-checkout`,
@@ -105,7 +111,7 @@ export const trackInitiateCheckout = (packageName: string, price: number) => {
 // ─── AddToCart ────────────────────────────────────────────────────────────────
 // Dipanggil ketika user memilih pricing card (setara "add to cart")
 export const trackAddToCart = (packageName: string, price: number) => {
-  ttq()?.track('AddToCart', {
+  fireEvent('AddToCart', {
     contents: [
       {
         content_id: `package-select`,
@@ -121,7 +127,7 @@ export const trackAddToCart = (packageName: string, price: number) => {
 // ─── CompleteRegistration ─────────────────────────────────────────────────────
 // Dipanggil ketika user submit order/checkout berhasil redirect ke payment
 export const trackCompleteRegistration = (packageName: string, price: number) => {
-  ttq()?.track('CompleteRegistration', {
+  fireEvent('CompleteRegistration', {
     contents: [
       {
         content_id: 'checkout',
@@ -137,7 +143,7 @@ export const trackCompleteRegistration = (packageName: string, price: number) =>
 // ─── AddToWishlist ────────────────────────────────────────────────────────────
 // Dipanggil ketika user memilih/klik pricing card
 export const trackAddToWishlist = (packageName: string, price: number) => {
-  ttq()?.track('AddToWishlist', {
+  fireEvent('AddToWishlist', {
     contents: [
       {
         content_id: 'package-select',
@@ -153,7 +159,7 @@ export const trackAddToWishlist = (packageName: string, price: number) => {
 // ─── Search ──────────────────────────────────────────────────────────────────
 // Dipanggil jika ada fitur search (opsional, untuk future use)
 export const trackSearch = (searchString: string) => {
-  ttq()?.track('Search', {
+  fireEvent('Search', {
     contents: [
       {
         content_id: 'search',
